@@ -1,6 +1,6 @@
 package com.multi.domain.iot.protocol.response;
 
-import com.multi.domain.iot.parameter.TransmitPublicParameter;
+import com.multi.domain.iot.param.PublicParams;
 import com.multi.domain.iot.protocol.Packet;
 import com.multi.domain.iot.protocol.message.MessageType;
 import lombok.Data;
@@ -14,7 +14,9 @@ import lombok.Data;
  */
 @Data
 public class FetchPublicParameterResponsePacket extends Packet {
-    private TransmitPublicParameter transmitPublicParameter;
+    private PublicParams publicParams;
+    private boolean success;
+
     @Override
     public byte getMessageType() {
         return MessageType.FETCH_PUBLIC_PARAMETER_RESPONSE_PACKET;

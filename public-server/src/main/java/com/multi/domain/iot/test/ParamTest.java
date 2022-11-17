@@ -13,7 +13,6 @@ public class ParamTest {
     public static void main(String[] args) {
         PublicParams publicParams = new PublicParams();
         publicParams.initialize("a.properties","ll.properties");
-        publicParams.rebuildCurvesParams();
         System.out.println(publicParams);
 
     }

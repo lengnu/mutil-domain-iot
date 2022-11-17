@@ -1,7 +1,6 @@
 package com.multi.domain.iot.handler;
 
-import com.multi.domain.iot.parameter.TransmitPublicParameter;
-import com.multi.domain.iot.parameter.TransmitPublicParameterBuilder;
+import com.multi.domain.iot.param.PublicParamsFactory;
 import com.multi.domain.iot.protocol.request.FetchPublicParameterRequestPacket;
 import com.multi.domain.iot.protocol.response.FetchPublicParameterResponsePacket;
 import io.netty.channel.ChannelHandler;
@@ -22,7 +21,7 @@ import java.io.InputStream;
 @Slf4j
 @ChannelHandler.Sharable
 public class FetchPublicParameterRequestHandler extends SimpleChannelInboundHandler<FetchPublicParameterRequestPacket> {
-    private FetchPublicParameterRequestHandler(){
+    private FetchPublicParameterRequestHandler() {
 
     }
 
@@ -30,23 +29,8 @@ public class FetchPublicParameterRequestHandler extends SimpleChannelInboundHand
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FetchPublicParameterRequestPacket requestPacket) throws Exception {
-        InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream("public.properties");
-            TransmitPublicParameter transmitPublicParameter = TransmitPublicParameterBuilder.build(inputStream);
-            FetchPublicParameterResponsePacket responsePacket = new FetchPublicParameterResponsePacket();
-            responsePacket.setTransmitPublicParameter(transmitPublicParameter);
-            ctx.writeAndFlush(responsePacket);
-        }catch (Exception e){
-            log.error("公共参数文件不存在......");
-        }finally {
-            try {
-                if (inputStream != null){
-                    inputStream.close();
-                }
-            }catch (Exception e){
-                log.error("文件关闭失败......");
-            }
-        }
+        FetchPublicParameterResponsePacket responsePacket = new FetchPublicParameterResponsePacket();
+        responsePacket.setPublicParams(PublicParamsFactory.getInstance());
+        ctx.writeAndFlush(responsePacket);
     }
 }

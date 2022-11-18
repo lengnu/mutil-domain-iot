@@ -4,6 +4,7 @@ import com.multi.domain.iot.protocol.message.MessageType;
 import com.multi.domain.iot.protocol.request.FetchPublicParameterRequestPacket;
 import com.multi.domain.iot.protocol.response.FetchPublicParameterResponsePacket;
 import com.multi.domain.iot.serialize.Serializer;
+import com.multi.domain.iot.serialize.impl.JsonSerializer;
 import io.netty.buffer.ByteBuf;
 
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class PacketCodec {
     private Serializer serializer;
 
     private PacketCodec() {
+        serializer = JsonSerializer.INSTANCE;;
         packetTypeMap = new HashMap<>();
         packetTypeMap.put(MessageType.FETCH_PUBLIC_PARAMETER_REQUEST_PACKET, FetchPublicParameterRequestPacket.class);
         packetTypeMap.put(MessageType.FETCH_PUBLIC_PARAMETER_RESPONSE_PACKET, FetchPublicParameterResponsePacket.class);

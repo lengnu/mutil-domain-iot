@@ -4,6 +4,7 @@ import com.multi.domain.iot.codec.PacketCodecHandler;
 import com.multi.domain.iot.handler.FetchPublicParameterRequestHandler;
 import com.multi.domain.iot.param.PublicParams;
 import com.multi.domain.iot.param.PublicParamsFactory;
+import com.multi.domain.iot.protocol.response.FetchPublicParameterResponsePacket;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -23,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class PublicServerStarter {
-    private static final int PORT = 8888;
+    private static final int PORT = 9999;
     private  final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
     private  final FetchPublicParameterRequestHandler fetchPublicParameterRequestHandler = FetchPublicParameterRequestHandler.INSTANCE;
 

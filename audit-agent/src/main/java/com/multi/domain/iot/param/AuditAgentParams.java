@@ -3,6 +3,8 @@ package com.multi.domain.iot.param;
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
 import it.unisa.dia.gas.jpbc.Pairing;
+import it.unisa.dia.gas.plaf.jpbc.field.z.ZElement;
+import it.unisa.dia.gas.plaf.jpbc.field.z.ZrField;
 import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
 import lombok.Data;
 import org.apache.commons.codec.binary.Base64;
@@ -36,8 +38,8 @@ public class AuditAgentParams {
         params.setParamSavePath(paramSavePath);
         publicParams.writePublicParamsToFile(paramSavePath);
         Pairing pairing = PairingFactory.getPairing(params.paramSavePath);
-        params.setG1(params.getG1());
-        params.setZq(params.getZq());
+        params.setG1(pairing.getG1());
+        params.setZq(pairing.getZr());
         params.setPairing(pairing);
         params.setGeneratorOne(params.G1.newElementFromBytes(
                 Base64.decodeBase64(publicParams.getGeneratorOneBase64())
@@ -45,6 +47,20 @@ public class AuditAgentParams {
         params.setGeneratorTwo(params.G1.newElementFromBytes(
                 Base64.decodeBase64(publicParams.getGeneratorTwoBase64())
         ).getImmutable());
+        params.setMsk(params.getZq().newRandomElement().getImmutable());
+        params.setPublicKey(params.getGeneratorOne().powZn(params.getMsk()).getImmutable());
         return params;
+    }
+
+    @Override
+    public String toString() {
+        return "AuditAgentParams{" +
+                "publicParams=" + publicParams +
+                "\n generatorOne=" + generatorOne +
+                "\n generatorTwo=" + generatorTwo +
+                "\n msk=" + msk +
+                "\n publicKey=" + publicKey +
+                "\n paramSavePath='" + paramSavePath + '\'' +
+                '}';
     }
 }

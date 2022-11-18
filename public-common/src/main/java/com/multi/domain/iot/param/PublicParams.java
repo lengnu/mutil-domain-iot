@@ -118,6 +118,7 @@ public class PublicParams {
             properties.setProperty(Constant.SIGN_1,this.sign1);
             properties.setProperty(Constant.SIGN_0,this.sign0);
             properties.setProperty(Constant.EXP_1,this.exp1);
+            properties.setProperty(Constant.EXP_2,this.exp2);
             properties.setProperty(Constant.GENERATOR_ONE_BASE_64,this.generatorOneBase64);
             properties.setProperty(Constant.GENERATOR_TWO_BASE_64,this.generatorTwoBase64);
             properties.setProperty(Constant.SECURE_PARAMETER, String.valueOf(this.secureParameter));
@@ -150,6 +151,24 @@ public class PublicParams {
 
     public  PublicParams() {
         this.initialize = new AtomicBoolean(false);
+    }
+
+
+    @Override
+    public String toString() {
+        return "PublicParams{" +
+                "curvesType='" + curvesType + '\'' +
+                "\n q='" + q + '\'' +
+                "\n h='" + h + '\'' +
+                "\n r='" + r + '\'' +
+                "\n exp2='" + exp2 + '\'' +
+                "\n exp1='" + exp1 + '\'' +
+                "\n sign1='" + sign1 + '\'' +
+                "\n sign0='" + sign0 + '\'' +
+                "\n generatorOneBase64='" + generatorOneBase64 + '\'' +
+                "\n generatorTwoBase64='" + generatorTwoBase64 + '\'' +
+                "\n secureParameter=" + secureParameter +
+                '}';
     }
 }
 

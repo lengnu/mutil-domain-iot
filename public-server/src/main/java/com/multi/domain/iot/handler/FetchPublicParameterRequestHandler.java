@@ -31,6 +31,7 @@ public class FetchPublicParameterRequestHandler extends SimpleChannelInboundHand
     protected void channelRead0(ChannelHandlerContext ctx, FetchPublicParameterRequestPacket requestPacket) throws Exception {
         FetchPublicParameterResponsePacket responsePacket = new FetchPublicParameterResponsePacket();
         responsePacket.setPublicParams(PublicParamsFactory.getInstance());
+        responsePacket.setSuccess(true);
         ctx.writeAndFlush(responsePacket);
     }
 }

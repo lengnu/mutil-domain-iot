@@ -24,7 +24,7 @@ import java.net.InetSocketAddress;
  */
 public class AuditAgentStarter {
     private static final String HOST = "127.0.0.1";
-    private static final int PORT = 8888;
+    private static final int PORT = 9999;
 
     private final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
     private final FetchPublicParameterResponseHandler fetchPublicParameterResponseHandler = FetchPublicParameterResponseHandler.INSTANCE;

@@ -3,7 +3,10 @@ package com.multi.domain.iot.handler;
 import com.multi.domain.iot.param.AuditAgentParams;
 import com.multi.domain.iot.param.AuditAgentParamsFactory;
 import com.multi.domain.iot.param.PublicParams;
+import com.multi.domain.iot.protocol.Packet;
+import com.multi.domain.iot.protocol.request.EnrollInformationRequestPacket;
 import com.multi.domain.iot.protocol.response.FetchPublicParameterResponsePacket;
+import com.multi.domain.iot.role.Role;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +33,21 @@ public class FetchPublicParameterResponseHandler extends SimpleChannelInboundHan
             AuditAgentParams auditAgentParams = AuditAgentParamsFactory.getInstance(publicParams);
             log.info("The auditAgentParams are already saved in the file : {} ",AuditAgentParamsFactory.PARAMS_SAVE_PATH);
             log.info("auditAgentParams : {}",auditAgentParams);
+            //将自身信息注册到服务器
+            log.info("注册公钥及IP信息......");
+            ctx.writeAndFlush(wrapEnrollInformation(auditAgentParams));
         }else {
             log.error("unknown error,exit......");
             System.exit(1);
         }
+    }
+
+    public Packet wrapEnrollInformation(AuditAgentParams auditAgentParams){
+        EnrollInformationRequestPacket requestPacket = new EnrollInformationRequestPacket();
+        requestPacket.setPublicKey(auditAgentParams.getPublicKey().toBytes());
+        requestPacket.setRole(Role.AA);
+        requestPacket.setListenPort(222);
+        requestPacket.setHost("12");
+        return requestPacket;
     }
 }

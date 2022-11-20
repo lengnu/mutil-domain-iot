@@ -11,11 +11,11 @@ public interface MessageType {
     /**
      * 获取公共参数请求数据包
      */
-    byte FETCH_PUBLIC_PARAMETER_REQUEST_PACKET = 1;
+    byte FETCH_PUBLIC_PARAMETER_REQUEST = 1;
     /**
      * 获取公共参数响应数据包
      */
-    byte FETCH_PUBLIC_PARAMETER_RESPONSE_PACKET = 2;
+    byte FETCH_PUBLIC_PARAMETER_RESPONSE = 2;
     /**
      * 注册公钥请求
      */
@@ -24,4 +24,12 @@ public interface MessageType {
      * 注册公钥响应
      */
     byte ENROLL_INFORMATION_RESPONSE = 4;
+    /**
+     * 查询AA和所有IDV的信息请求，包括IP和公钥
+     */
+    byte QUERY_AUDIT_AGENT_AND_ID_VERIFIERS_REQUEST = 5;
+    /**
+     * 查询AA和所有IDV的信息响应，包括IP和公钥
+     */
+    byte QUERY_AUDIT_AGENT_AND_ID_VERIFIERS_RESPONSE = 6;
 }

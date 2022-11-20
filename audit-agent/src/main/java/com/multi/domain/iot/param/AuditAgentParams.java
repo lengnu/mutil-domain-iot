@@ -3,11 +3,11 @@ package com.multi.domain.iot.param;
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
 import it.unisa.dia.gas.jpbc.Pairing;
-import it.unisa.dia.gas.plaf.jpbc.field.z.ZElement;
-import it.unisa.dia.gas.plaf.jpbc.field.z.ZrField;
 import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
 import lombok.Data;
 import org.apache.commons.codec.binary.Base64;
+
+import java.util.Properties;
 
 /**
  * @BelongsProject: Multi-Domain-IoT
@@ -17,8 +17,7 @@ import org.apache.commons.codec.binary.Base64;
  * @Description: 审计代理的本地参数
  */
 @Data
-public class AuditAgentParams {
-    private PublicParams publicParams;
+public class AuditAgentParams extends PublicParams {
     private Pairing pairing;
     private Field Zq;
     private Field G1;
@@ -26,41 +25,83 @@ public class AuditAgentParams {
     private Element generatorTwo;
     private Element msk;
     private Element publicKey;
-    private String paramSavePath;
+    private String publicParamSavePath;
+    private String selfParamSavePath;
+    private Integer id;
 
-    private AuditAgentParams() {
-
+    public AuditAgentParams(PublicParams publicParams, String publicParamSavePath, String selfParamSavePath) {
+        this.setCurvesType(publicParams.getCurvesType());
+        this.setExp1(publicParams.getExp1());
+        this.setExp2(publicParams.getExp2());
+        this.setGeneratorOneBase64(publicParams.getGeneratorOneBase64());
+        this.setGeneratorTwoBase64(publicParams.getGeneratorTwoBase64());
+        this.setH(publicParams.getH());
+        this.setQ(publicParams.getQ());
+        this.setR(publicParams.getR());
+        this.setSign0(publicParams.getSign0());
+        this.setSign1(publicParams.getSign1());
+        this.setInitialize(publicParams.getInitialize());
+        this.setSecureParameter(publicParams.getSecureParameter());
+        this.publicParamSavePath = publicParamSavePath;
+        this.selfParamSavePath = selfParamSavePath;
+        this.init(publicParams, this.publicParamSavePath, this.selfParamSavePath);
     }
 
-    public static AuditAgentParams build(PublicParams publicParams, String paramSavePath) {
-        AuditAgentParams params = new AuditAgentParams();
-        params.setPublicParams(publicParams);
-        params.setParamSavePath(paramSavePath);
-        publicParams.writePublicParamsToFile(paramSavePath);
-        Pairing pairing = PairingFactory.getPairing(params.paramSavePath);
-        params.setG1(pairing.getG1());
-        params.setZq(pairing.getZr());
-        params.setPairing(pairing);
-        params.setGeneratorOne(params.G1.newElementFromBytes(
+
+    @Override
+    protected void autowireSelfParamsToProperties(Properties properties) {
+        properties.setProperty(Constant.MSK, Base64.encodeBase64String(this.msk.toBytes()));
+        properties.setProperty(Constant.PUBLIC_KEY, Base64.encodeBase64String(this.publicKey.toBytes()));
+        properties.setProperty(Constant.ID, String.valueOf(this.id));
+    }
+
+
+    /**
+     * 初始化方法
+     *
+     * @param publicParams
+     * @param publicParamSavePath
+     * @param selfParamSavePath
+     * @return
+     */
+    public void init(PublicParams publicParams, String publicParamSavePath, String selfParamSavePath) {
+        this.setPublicParamSavePath(publicParamSavePath);
+        this.setSelfParamSavePath(selfParamSavePath);
+        //写人公共参数到文件，方便初始化双线性对
+        publicParams.writePublicParamsToFile(publicParamSavePath);
+        Pairing pairing = PairingFactory.getPairing(this.publicParamSavePath);
+        this.setG1(pairing.getG1());
+        this.setZq(pairing.getZr());
+        this.setPairing(pairing);
+        this.setGeneratorOne(this.G1.newElementFromBytes(
                 Base64.decodeBase64(publicParams.getGeneratorOneBase64())
         ).getImmutable());
-        params.setGeneratorTwo(params.G1.newElementFromBytes(
+        this.setGeneratorTwo(this.G1.newElementFromBytes(
                 Base64.decodeBase64(publicParams.getGeneratorTwoBase64())
         ).getImmutable());
-        params.setMsk(params.getZq().newRandomElement().getImmutable());
-        params.setPublicKey(params.getGeneratorOne().powZn(params.getMsk()).getImmutable());
-        return params;
+        this.setMsk(this.getZq().newRandomElement().getImmutable());
+        this.setPublicKey(this.getGeneratorOne().powZn(this.getMsk()).getImmutable());
+
     }
+
 
     @Override
     public String toString() {
-        return "AuditAgentParams{" +
-                "publicParams=" + publicParams +
-                "\n generatorOne=" + generatorOne +
-                "\n generatorTwo=" + generatorTwo +
-                "\n msk=" + msk +
-                "\n publicKey=" + publicKey +
-                "\n paramSavePath='" + paramSavePath + '\'' +
-                '}';
+        return "AuditAgentParams{\n" +
+                "generatorOne=" + generatorOne +
+                ",\n generatorTwo=" + generatorTwo +
+                ",\n msk=" + msk +
+                ",\n publicKey=" + publicKey +
+                ",\n curvesType='" + curvesType + '\'' +
+                ",\n q='" + q + '\'' +
+                ",\n h='" + h + '\'' +
+                ",\n r='" + r + '\'' +
+                ",\n exp2='" + exp2 + '\'' +
+                ",\n exp1='" + exp1 + '\'' +
+                ",\n sign1='" + sign1 + '\'' +
+                ",\n sign0='" + sign0 + '\'' +
+                ",\n secureParameter=" + secureParameter +
+                ",\n id=" + id +
+                "\n}";
     }
 }

@@ -1,5 +1,6 @@
 package com.multi.domain.iot.session;
 
+import com.multi.domain.iot.param.EnrollInformationOnPublicServer;
 import com.multi.domain.iot.role.Role;
 
 import java.util.HashMap;
@@ -18,18 +19,24 @@ public class SessionUtils {
     /**
      * 为注册的用户分配ID
      */
-    private static AtomicInteger atomicInteger = new AtomicInteger(0);
+    private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger(0);
     /**
      * 维护全局的节点信息
      */
-    private static Map<Role, Map<Integer, Session>> informationMap = new ConcurrentHashMap<>();
+    private static final Map<Role, Map<Integer, EnrollInformationOnPublicServer>> INFORMATION_MAP = new ConcurrentHashMap<>();
+
+   public static Map<Role, Map<Integer, EnrollInformationOnPublicServer>> getInformationMap(){
+        return INFORMATION_MAP;
+    }
 
     //返回用户的id信息
     public static int bindSession(Role role, String ip, int listenPort, byte[] publicKey) {
-        Session session = new Session(atomicInteger.getAndIncrement(),role,publicKey,ip,listenPort);
-        Map<Integer,Session> userInformation = new HashMap<>();
-        userInformation.put(session.getId(),session);
-        informationMap.put(role,userInformation);
-        return session.getId();
+        EnrollInformationOnPublicServer information = new EnrollInformationOnPublicServer(ATOMIC_INTEGER.incrementAndGet(), role, publicKey, ip, listenPort);
+        if (INFORMATION_MAP.get(role) == null){
+            Map<Integer,EnrollInformationOnPublicServer> userInformation = new HashMap<>();
+            INFORMATION_MAP.put(role,userInformation);
+        }
+       INFORMATION_MAP.get(role).put(information.getId(),information);
+        return information.getId();
     }
 }

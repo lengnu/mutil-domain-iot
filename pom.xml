@@ -11,6 +11,8 @@
         <module>public-server</module>
         <module>public-common</module>
         <module>audit-agent</module>
+        <module>id-verifier</module>
+        <module>ud</module>
     </modules>
     <packaging>pom</packaging>
 

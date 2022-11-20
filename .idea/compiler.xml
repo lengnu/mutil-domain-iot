@@ -8,8 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="audit-agent" />
-        <module name="public-common" />
         <module name="public-server" />
+        <module name="id-verifier" />
+        <module name="public-common" />
+        <module name="ud" />
       </profile>
     </annotationProcessing>
   </component>

@@ -11,7 +11,7 @@ public enum Role {
     /**
      * 三种角色
      */
-    AA("AA"),UD("UD"),VV("VV");
+    AA("auditAgent"),UD("UD"),IDV("idVerifier");
 
     private final String role;
 

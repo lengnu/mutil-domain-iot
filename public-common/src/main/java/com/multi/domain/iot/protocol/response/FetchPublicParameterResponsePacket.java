@@ -19,6 +19,6 @@ public class FetchPublicParameterResponsePacket extends Packet {
 
     @Override
     public byte getMessageType() {
-        return MessageType.FETCH_PUBLIC_PARAMETER_RESPONSE_PACKET;
+        return MessageType.FETCH_PUBLIC_PARAMETER_RESPONSE;
     }
 }

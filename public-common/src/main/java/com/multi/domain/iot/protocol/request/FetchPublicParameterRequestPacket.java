@@ -15,6 +15,6 @@ import lombok.Data;
 public class FetchPublicParameterRequestPacket extends Packet {
     @Override
     public byte getMessageType() {
-        return MessageType.FETCH_PUBLIC_PARAMETER_REQUEST_PACKET;
+        return MessageType.FETCH_PUBLIC_PARAMETER_REQUEST;
     }
 }

@@ -29,12 +29,10 @@ public class FetchPublicParameterResponseHandler extends SimpleChannelInboundHan
     protected void channelRead0(ChannelHandlerContext ctx, FetchPublicParameterResponsePacket responsePacket) throws Exception {
         if (responsePacket.isSuccess()){
             log.info("Get server common parameters successfully...");
-            PublicParams publicParams = responsePacket.getPublicParams();
-            AuditAgentParams auditAgentParams = AuditAgentParamsFactory.getInstance(publicParams);
-            log.info("The auditAgentParams are already saved in the file : {} ",AuditAgentParamsFactory.PARAMS_SAVE_PATH);
-            log.info("auditAgentParams : {}",auditAgentParams);
+            AuditAgentParams auditAgentParams = AuditAgentParamsFactory.getInstance(responsePacket.getPublicParams());
+            log.info("The auditAgent public params are already saved in the file : {} ",AuditAgentParamsFactory.PUBLIC_PARAMS_SAVE_PATH);
             //将自身信息注册到服务器
-            log.info("注册公钥及IP信息......");
+            log.info("The auditAgent begins to register its public key and address information with the server......");
             ctx.writeAndFlush(wrapEnrollInformation(auditAgentParams));
         }else {
             log.error("unknown error,exit......");

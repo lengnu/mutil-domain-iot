@@ -1,6 +1,5 @@
 package com.multi.domain.iot.handler;
 
-import com.multi.domain.iot.protocol.Packet;
 import com.multi.domain.iot.protocol.request.EnrollInformationRequestPacket;
 import com.multi.domain.iot.protocol.response.EnrollInformationResponsePacket;
 import com.multi.domain.iot.role.Role;
@@ -20,10 +19,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ChannelHandler.Sharable
 public class EnrollInformationRequestHandler extends SimpleChannelInboundHandler<EnrollInformationRequestPacket> {
+    private EnrollInformationRequestHandler(){
+
+    }
+
+    public static final EnrollInformationRequestHandler INSTANCE = new EnrollInformationRequestHandler();
+
+
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, EnrollInformationRequestPacket requestPacket) throws Exception {
         int id = bindSession(requestPacket);
-        Packet packet = new EnrollInformationResponsePacket();
+        log.info("Listen to {} registration,id : {}",requestPacket.getRole().getRole(),id);
+        EnrollInformationResponsePacket packet = new EnrollInformationResponsePacket();
+        packet.setId(id);
+        packet.setSuccess(true);
+        ctx.writeAndFlush(packet);
     }
 
     public int bindSession(EnrollInformationRequestPacket requestPacket){

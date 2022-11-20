@@ -1,8 +1,12 @@
 package com.multi.domain.iot.protocol;
 
 import com.multi.domain.iot.protocol.message.MessageType;
+import com.multi.domain.iot.protocol.request.EnrollInformationRequestPacket;
 import com.multi.domain.iot.protocol.request.FetchPublicParameterRequestPacket;
+import com.multi.domain.iot.protocol.request.QueryAuditAgentAndIDVerifiersRequestPacket;
+import com.multi.domain.iot.protocol.response.EnrollInformationResponsePacket;
 import com.multi.domain.iot.protocol.response.FetchPublicParameterResponsePacket;
+import com.multi.domain.iot.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
 import com.multi.domain.iot.serialize.Serializer;
 import com.multi.domain.iot.serialize.impl.JsonSerializer;
 import io.netty.buffer.ByteBuf;
@@ -34,8 +38,12 @@ public class PacketCodec {
     private PacketCodec() {
         serializer = JsonSerializer.INSTANCE;;
         packetTypeMap = new HashMap<>();
-        packetTypeMap.put(MessageType.FETCH_PUBLIC_PARAMETER_REQUEST_PACKET, FetchPublicParameterRequestPacket.class);
-        packetTypeMap.put(MessageType.FETCH_PUBLIC_PARAMETER_RESPONSE_PACKET, FetchPublicParameterResponsePacket.class);
+        packetTypeMap.put(MessageType.FETCH_PUBLIC_PARAMETER_REQUEST, FetchPublicParameterRequestPacket.class);
+        packetTypeMap.put(MessageType.FETCH_PUBLIC_PARAMETER_RESPONSE, FetchPublicParameterResponsePacket.class);
+        packetTypeMap.put(MessageType.ENROLL_INFORMATION_REQUEST, EnrollInformationRequestPacket.class);
+        packetTypeMap.put(MessageType.ENROLL_INFORMATION_RESPONSE, EnrollInformationResponsePacket.class);
+        packetTypeMap.put(MessageType.QUERY_AUDIT_AGENT_AND_ID_VERIFIERS_REQUEST, QueryAuditAgentAndIDVerifiersRequestPacket.class);
+        packetTypeMap.put(MessageType.QUERY_AUDIT_AGENT_AND_ID_VERIFIERS_RESPONSE, QueryAuditAgentAndIDVerifiersResponsePacket.class);
     }
 
     /**
@@ -46,13 +54,13 @@ public class PacketCodec {
      * @return
      */
     public void encode(ByteBuf byteBuf, Packet packet) {
-        //1.吸入魔数
+        //1.写入魔数
         byteBuf.writeInt(MAGIC_NUMBER);
 
         //2.写入版本号
         byteBuf.writeByte(packet.getVersion());
 
-        //3.吸入序列化算法
+        //3.写入序列化算法
         byteBuf.writeByte(serializer.getSerializerAlgorithm());
 
         //4.写入消息类型

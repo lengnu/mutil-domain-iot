@@ -11,7 +11,15 @@ import lombok.Data;
 @Data
 public class AuditAgentParamsFactory {
     private static volatile AuditAgentParams auditAgentParams;
-    public static final String PARAMS_SAVE_PATH = "auditAgentParams.properties";
+    public static final String PUBLIC_PARAMS_SAVE_PATH = "auditAgentParams-public.properties";
+    public static final String SELF_PARAMS_SAVE_PATH = "auditAgentParams-self.properties";
+
+    public static AuditAgentParams getInstance(){
+        if (auditAgentParams == null){
+            throw new RuntimeException("The auditAgentParams has not been initialized......");
+        }
+        return auditAgentParams;
+    }
 
     /**
      * 单例模型获取参数
@@ -22,7 +30,7 @@ public class AuditAgentParamsFactory {
         if (auditAgentParams == null){
             synchronized (AuditAgentParamsFactory.class){
                 if (auditAgentParams == null){
-                    auditAgentParams = AuditAgentParams.build(publicParams,PARAMS_SAVE_PATH);
+                    auditAgentParams = new AuditAgentParams(publicParams,PUBLIC_PARAMS_SAVE_PATH, SELF_PARAMS_SAVE_PATH);
                 }
             }
         }

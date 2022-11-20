@@ -1,6 +1,7 @@
 package com.multi.domain.iot.protocol.request;
 
 import com.multi.domain.iot.protocol.Packet;
+import com.multi.domain.iot.protocol.message.MessageType;
 import com.multi.domain.iot.role.Role;
 import lombok.Data;
 
@@ -20,6 +21,6 @@ public class EnrollInformationRequestPacket extends Packet {
 
     @Override
     public byte getMessageType() {
-        return 0;
+        return MessageType.ENROLL_INFORMATION_REQUEST;
     }
 }

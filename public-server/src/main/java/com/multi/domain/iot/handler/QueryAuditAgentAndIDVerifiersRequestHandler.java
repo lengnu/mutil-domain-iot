@@ -1,8 +1,9 @@
 package com.multi.domain.iot.handler;
 
-import com.multi.domain.iot.protocol.request.QueryAuditAgentAndIDVerifiersRequestPacket;
-import com.multi.domain.iot.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
-import com.multi.domain.iot.session.SessionUtils;
+import com.multi.domain.iot.common.domain.Domain;
+import com.multi.domain.iot.common.protocol.request.QueryAuditAgentAndIDVerifiersRequestPacket;
+import com.multi.domain.iot.common.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
+import com.multi.domain.iot.common.session.SessionUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -25,10 +26,12 @@ public class QueryAuditAgentAndIDVerifiersRequestHandler extends SimpleChannelIn
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, QueryAuditAgentAndIDVerifiersRequestPacket requestPacket) throws Exception {
-        log.info("A node has been detected to query all entity registration information......");
+        Domain domain = requestPacket.getDomain();
+        log.info("Detect UD query for registration information in domain {}",requestPacket.getDomain().getDomain());
         QueryAuditAgentAndIDVerifiersResponsePacket responsePacket = new QueryAuditAgentAndIDVerifiersResponsePacket();
-        responsePacket.setSuccess(true);
-        responsePacket.setRoleInformationMap(SessionUtils.getInformationMap());
+        responsePacket.setAuditAgentSession(SessionUtils.getAuditAgentSession());
+        responsePacket.setIdVerifierSession(SessionUtils.getIdVerifiersSessions(domain));
+        responsePacket.setDomain(requestPacket.getDomain());
         ctx.writeAndFlush(responsePacket);
     }
 }

@@ -1,15 +1,12 @@
 package com.multi.domain.iot.handler;
 
-import com.multi.domain.iot.param.PublicParamsFactory;
-import com.multi.domain.iot.protocol.request.FetchPublicParameterRequestPacket;
-import com.multi.domain.iot.protocol.response.FetchPublicParameterResponsePacket;
+import com.multi.domain.iot.common.param.PublicParamsFactory;
+import com.multi.domain.iot.common.protocol.request.FetchPublicParameterRequestPacket;
+import com.multi.domain.iot.common.protocol.response.FetchPublicParameterResponsePacket;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
 
 /**
  * @BelongsProject: Multi-Domain-IoT

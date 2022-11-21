@@ -1,6 +1,6 @@
 package com.multi.domain.iot.starter;
 
-import com.multi.domain.iot.codec.PacketCodecHandler;
+import com.multi.domain.iot.common.codec.PacketCodecHandler;
 import com.multi.domain.iot.handler.EnrollInformationRequestHandler;
 import com.multi.domain.iot.handler.FetchPublicParameterRequestHandler;
 import com.multi.domain.iot.handler.QueryAuditAgentAndIDVerifiersRequestHandler;

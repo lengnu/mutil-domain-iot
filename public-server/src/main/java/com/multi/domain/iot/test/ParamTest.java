@@ -1,6 +1,6 @@
 package com.multi.domain.iot.test;
 
-import com.multi.domain.iot.param.PublicParams;
+import com.multi.domain.iot.common.param.PublicParams;
 
 /**
  * @BelongsProject: Multi-Domain-IoT

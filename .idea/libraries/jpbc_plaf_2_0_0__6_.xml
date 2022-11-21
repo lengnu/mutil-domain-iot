@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="jpbc-plaf-2.0.0 (6)">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/id-verifier/lib/jpbc-plaf-2.0.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/id-verifier/lib/jpbc-api-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/common/lib/jpbc-plaf-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/common/lib/jpbc-api-2.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

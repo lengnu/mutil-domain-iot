@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>public-server</module>
-        <module>public-common</module>
+        <module>common</module>
         <module>audit-agent</module>
         <module>id-verifier</module>
         <module>ud</module>

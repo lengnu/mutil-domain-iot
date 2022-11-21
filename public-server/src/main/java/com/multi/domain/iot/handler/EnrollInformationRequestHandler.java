@@ -1,9 +1,9 @@
 package com.multi.domain.iot.handler;
 
-import com.multi.domain.iot.protocol.request.EnrollInformationRequestPacket;
-import com.multi.domain.iot.protocol.response.EnrollInformationResponsePacket;
-import com.multi.domain.iot.role.Role;
-import com.multi.domain.iot.session.SessionUtils;
+import com.multi.domain.iot.common.protocol.request.EnrollInformationRequestPacket;
+import com.multi.domain.iot.common.protocol.response.EnrollInformationResponsePacket;
+import com.multi.domain.iot.common.role.Role;
+import com.multi.domain.iot.common.session.SessionUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -26,22 +26,19 @@ public class EnrollInformationRequestHandler extends SimpleChannelInboundHandler
     public static final EnrollInformationRequestHandler INSTANCE = new EnrollInformationRequestHandler();
 
 
-
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, EnrollInformationRequestPacket requestPacket) throws Exception {
-        int id = bindSession(requestPacket);
-        log.info("Listen to {} registration,id : {}",requestPacket.getRole().getRole(),id);
+        int id = SessionUtils.bindSession(requestPacket);
         EnrollInformationResponsePacket packet = new EnrollInformationResponsePacket();
-        packet.setId(id);
-        packet.setSuccess(true);
+        if (id < 0){
+            packet.setSuccess(false);
+            packet.setReason("AuditAgent cannot be registered repeatedly");
+        }else {
+            packet.setId(id);
+            packet.setSuccess(true);
+        }
+        log.info("Listen to {} registration",requestPacket.getRole().getRole());
         ctx.writeAndFlush(packet);
     }
 
-    public int bindSession(EnrollInformationRequestPacket requestPacket){
-        String host = requestPacket.getHost();
-        int listenPort = requestPacket.getListenPort();
-        byte[] publicKey = requestPacket.getPublicKey();
-        Role role = requestPacket.getRole();
-        return SessionUtils.bindSession(role,host,listenPort,publicKey);
-    }
 }

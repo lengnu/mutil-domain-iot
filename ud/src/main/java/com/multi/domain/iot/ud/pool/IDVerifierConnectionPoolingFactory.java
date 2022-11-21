@@ -2,7 +2,8 @@ package com.multi.domain.iot.ud.pool;
 
 import com.multi.domain.iot.common.codec.PacketCodecHandler;
 import com.multi.domain.iot.common.pool.ConnectionPoolingFactory;
-import com.multi.domain.iot.ud.handler.response.UDDeliverVerifyInformationToIDVerifierResponseHandler;
+import com.multi.domain.iot.common.protocol.Packet;
+import com.multi.domain.iot.ud.handler.response.DeliverUDVerifyInformationToIDVerifierResponseHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -12,6 +13,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 import java.net.InetSocketAddress;
+import java.util.Collection;
 
 
 /**
@@ -27,10 +29,19 @@ public class IDVerifierConnectionPoolingFactory extends ConnectionPoolingFactory
 
     public static final IDVerifierConnectionPoolingFactory INSTANCE = new IDVerifierConnectionPoolingFactory();
 
+
+    @Override
+    public void boardCast(Packet packet, Collection<InetSocketAddress> connections) throws InterruptedException {
+        for (InetSocketAddress connection : connections){
+            Channel channel = this.getChannel(connection);
+            channel.writeAndFlush(packet);
+        }
+    }
+
     @Override
     protected Channel doCreateChannel(InetSocketAddress inetSocketAddress) throws InterruptedException {
         final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
-        final UDDeliverVerifyInformationToIDVerifierResponseHandler uDDeliverVerifyInformationToIDVerifierResponseHandler = UDDeliverVerifyInformationToIDVerifierResponseHandler.INSTANCE;
+        final DeliverUDVerifyInformationToIDVerifierResponseHandler uDDeliverUDVerifyInformationToIDVerifierResponseHandler = DeliverUDVerifyInformationToIDVerifierResponseHandler.INSTANCE;
         NioEventLoopGroup worker = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(worker)
@@ -43,7 +54,7 @@ public class IDVerifierConnectionPoolingFactory extends ConnectionPoolingFactory
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
                         nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         nioSocketChannel.pipeline().addLast(packetCodecHandler);
-                        nioSocketChannel.pipeline().addLast(uDDeliverVerifyInformationToIDVerifierResponseHandler);
+                        nioSocketChannel.pipeline().addLast(uDDeliverUDVerifyInformationToIDVerifierResponseHandler);
 
                     }
                 });

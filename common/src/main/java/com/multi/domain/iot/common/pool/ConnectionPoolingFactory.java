@@ -1,10 +1,13 @@
 package com.multi.domain.iot.common.pool;
 
+import com.multi.domain.iot.common.protocol.Packet;
 import io.netty.channel.Channel;
 
 import java.net.InetSocketAddress;
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Predicate;
 
 /**
  * @BelongsProject: Multi-Domain-IoT
@@ -28,6 +31,8 @@ public abstract class ConnectionPoolingFactory implements ConnectionPooling{
         Channel channel = doCreateChannel(inetSocketAddress);
         channelMap.put(inetSocketAddress,channel);
     }
+
+    protected abstract void boardCast(Packet packet, Collection<InetSocketAddress> connections) throws InterruptedException;
 
     protected abstract Channel doCreateChannel(InetSocketAddress inetSocketAddress) throws InterruptedException;
 }

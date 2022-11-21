@@ -2,7 +2,6 @@ package com.multi.domain.iot.ud.starter;
 
 import com.multi.domain.iot.common.codec.PacketCodecHandler;
 import com.multi.domain.iot.common.protocol.request.FetchPublicParameterRequestPacket;
-import com.multi.domain.iot.ud.handler.response.EnrollInformationResponseHandler;
 import com.multi.domain.iot.ud.handler.response.FetchPublicParameterResponseHandler;
 import com.multi.domain.iot.ud.handler.response.QueryAuditAgentAndIDVerifiersResponseHandler;
 import io.netty.bootstrap.Bootstrap;
@@ -31,8 +30,12 @@ public class UDClientStarter {
 
     private final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
     private final FetchPublicParameterResponseHandler fetchPublicParameterResponseHandler = FetchPublicParameterResponseHandler.INSTANCE;
-    private final EnrollInformationResponseHandler enrollInformationResponseHandler = EnrollInformationResponseHandler.INSTANCE;
+    //private final EnrollInformationResponseHandler enrollInformationResponseHandler = EnrollInformationResponseHandler.INSTANCE;
     private final QueryAuditAgentAndIDVerifiersResponseHandler queryAuditAgentAndIDVerifiersResponseHandler = QueryAuditAgentAndIDVerifiersResponseHandler.INSTANCE;
+
+    public UDClientStarter() throws InterruptedException {
+        this.init();
+    }
 
     private void init() throws InterruptedException {
         NioEventLoopGroup worker = new NioEventLoopGroup();
@@ -48,7 +51,7 @@ public class UDClientStarter {
                         nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         nioSocketChannel.pipeline().addLast(packetCodecHandler);
                         nioSocketChannel.pipeline().addLast(fetchPublicParameterResponseHandler);
-                        nioSocketChannel.pipeline().addLast(enrollInformationResponseHandler);
+                        //nioSocketChannel.pipeline().addLast(enrollInformationResponseHandler);
                         nioSocketChannel.pipeline().addLast(queryAuditAgentAndIDVerifiersResponseHandler);
                     }
                 });

@@ -4,11 +4,11 @@ import com.multi.domain.iot.common.protocol.request.EnrollInformationRequestPack
 import com.multi.domain.iot.common.protocol.message.MessageType;
 import com.multi.domain.iot.common.protocol.request.FetchPublicParameterRequestPacket;
 import com.multi.domain.iot.common.protocol.request.QueryAuditAgentAndIDVerifiersRequestPacket;
-import com.multi.domain.iot.common.protocol.request.UDDeliverVerifyInformationToIDVerifierRequestPacket;
+import com.multi.domain.iot.common.protocol.request.UDAuthenticationMessageRequestPacket;
 import com.multi.domain.iot.common.protocol.response.EnrollInformationResponsePacket;
 import com.multi.domain.iot.common.protocol.response.FetchPublicParameterResponsePacket;
 import com.multi.domain.iot.common.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
-import com.multi.domain.iot.common.protocol.response.UDDeliverVerifyInformationToIDVerifierResponsePacket;
+import com.multi.domain.iot.common.protocol.response.UDAuthenticationMessageResponsePacket;
 import com.multi.domain.iot.common.serialize.Serializer;
 import com.multi.domain.iot.common.serialize.impl.JsonSerializer;
 import io.netty.buffer.ByteBuf;
@@ -46,8 +46,8 @@ public class PacketCodec {
         packetTypeMap.put(MessageType.ENROLL_INFORMATION_RESPONSE, EnrollInformationResponsePacket.class);
         packetTypeMap.put(MessageType.QUERY_AUDIT_AGENT_AND_ID_VERIFIERS_REQUEST, QueryAuditAgentAndIDVerifiersRequestPacket.class);
         packetTypeMap.put(MessageType.QUERY_AUDIT_AGENT_AND_ID_VERIFIERS_RESPONSE, QueryAuditAgentAndIDVerifiersResponsePacket.class);
-        packetTypeMap.put(MessageType.UD_DELIVER_VERIFY_INFORMATION_TO_ID_VERIFIER_REQUEST, UDDeliverVerifyInformationToIDVerifierRequestPacket.class);
-        packetTypeMap.put(MessageType.UD_DELIVER_VERIFY_INFORMATION_TO_ID_VERIFIER_RESPONSE, UDDeliverVerifyInformationToIDVerifierResponsePacket.class);
+        packetTypeMap.put(MessageType.UD_AUTHENTICATION_MESSAGE_REQUEST, UDAuthenticationMessageRequestPacket.class);
+        packetTypeMap.put(MessageType.UD_AUTHENTICATION_MESSAGE_RESPONSE, UDAuthenticationMessageResponsePacket.class);
     }
 
     /**

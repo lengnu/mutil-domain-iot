@@ -2,8 +2,7 @@ package com.multi.domain.iot.handler;
 
 import com.multi.domain.iot.common.protocol.request.EnrollInformationRequestPacket;
 import com.multi.domain.iot.common.protocol.response.EnrollInformationResponsePacket;
-import com.multi.domain.iot.common.role.Role;
-import com.multi.domain.iot.common.session.SessionUtils;
+import com.multi.domain.iot.session.SessionUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

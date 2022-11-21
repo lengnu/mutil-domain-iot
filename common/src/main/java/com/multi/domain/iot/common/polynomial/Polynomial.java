@@ -3,6 +3,11 @@ package com.multi.domain.iot.common.polynomial;
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
 import it.unisa.dia.gas.jpbc.Pairing;
+import it.unisa.dia.gas.plaf.jpbc.field.z.ZElement;
+import it.unisa.dia.gas.plaf.jpbc.field.z.ZrElement;
+import it.unisa.dia.gas.plaf.jpbc.field.z.ZrField;
+import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
+import it.unisa.dia.gas.plaf.jpbc.pairing.a.TypeACurveGenerator;
 import lombok.Data;
 
 import java.util.*;
@@ -24,14 +29,16 @@ public class Polynomial {
      * 多项式的运算域
      */
     private final Field Zq;
+    private final Field G;
     /**
      * 多项式的系数
      */
     private final Element[] coefficients;
 
-    public Polynomial(int order, Field zq, Element s) {
+    public Polynomial(int order, Field zq, Field G,Element s) {
         this.order = order;
         this.Zq = zq;
+        this.G = G;
         this.coefficients = new Element[order + 1];
         this.init(s);
     }
@@ -74,14 +81,14 @@ public class Polynomial {
     public Map<Integer, byte[]> computePolynomialCoefficientsCommitment(Element h) {
         Map<Integer, byte[]> result = new HashMap<>();
         for (int i = 0; i < this.coefficients.length; i++) {
-            Element commitment = computePolynomialCoefficientsCommitment(h,this.coefficients[i]);
+            Element commitment = computePolynomialCoefficientCommitment(h,this.coefficients[i]);
             result.put(i, commitment.toBytes());
         }
         return result;
     }
 
-    private Element computePolynomialCoefficientsCommitment(Element h,Element coefficient){
-        return h.powZn(coefficient).getImmutable();
+    private Element computePolynomialCoefficientCommitment(Element h,Element coefficient){
+        return h.powZn(coefficient);
     }
 
 
@@ -99,49 +106,57 @@ public class Polynomial {
 
 
     private Element computeShareCommitment(byte[] share,Element h){
-        Element zrShare = this.Zq.newElementFromBytes(share);
-        return h.powZn(zrShare).getImmutable();
+        Element zrShare = this.Zq.newElementFromBytes(share).getImmutable();
+        return h.powZn(zrShare);
     }
 
 
     /**
      * 生成计算保护Yi
      */
-    public  Map<Integer, byte[]> computePublicKeysCommitment(Map<Integer, byte[]> publicKeys, Map<Integer, byte[]> shares) {
+    public  Map<Integer, byte[]> computePublicKeySharesProtection(Map<Integer, byte[]> publicKeys, Map<Integer, byte[]> shares) {
         Map<Integer, byte[]> result = new HashMap<>();
         publicKeys.forEach((id, publicKey) -> {
             byte[] share = shares.get(id);
-            Element commitment =computePublicKeyCommitment(publicKey,share);
+            Element commitment =computePublicKeyShareProtection(publicKey,share);
             result.put(id, commitment.toBytes());
         });
         return result;
     }
 
-    private  Element computePublicKeyCommitment(byte[] publicKey,byte[] share){
-        Element publicKeyElement = this.Zq.newElementFromBytes(publicKey);
-        Element shareElement = this.Zq.newElementFromBytes(share);
-        return publicKeyElement.powZn(shareElement).getImmutable();
+    private  Element computePublicKeyShareProtection(byte[] publicKey,byte[] share){
+        Element publicKeyElement = this.G.newElementFromBytes(publicKey).getImmutable();
+        Element shareElement = this.Zq.newElementFromBytes(share).getImmutable();
+        return publicKeyElement.powZn(shareElement);
     }
 
-
-    /**
-     * 计算对应的验证信息
-     */
-    public  Map<Integer, byte[]> computeVerifiesInformation(Map<Integer, byte[]> sharesCommitment, Map<Integer, byte[]> publicKeys, Pairing pairing,Field G) {
-        Map<Integer, byte[]> result = new HashMap<>();
-        sharesCommitment.forEach((id, shareCommitment) -> {
-            byte[] publicKey = publicKeys.get(id);
-            Element verifyInformation = computeVerifyInformation(shareCommitment,publicKey,pairing,G);
-            result.put(id, verifyInformation.toBytes());
+    public static void main(String[] args) {
+        TypeACurveGenerator typeACurveGenerator = new TypeACurveGenerator(4, 4);
+        Pairing pairing = PairingFactory.getPairing(typeACurveGenerator.generate());
+        Field zr = pairing.getZr();
+        System.out.println(zr);
+        System.out.println(zr.getOrder());
+        Element secret = zr.newElement(3);
+        Polynomial polynomial = new Polynomial(2, zr, zr,secret);
+        System.out.println("polynomial = " + Arrays.toString(polynomial.coefficients));
+        Map<Integer, byte[]> shares = polynomial.computeShares(new HashSet<>(Arrays.asList(1, 2, 3)));
+        shares.forEach((x,y) -> {
+            System.out.println("x = " + x +  "\t y = " + zr.newElementFromBytes(y));
         });
-        return result;
-    }
 
-    private  Element computeVerifyInformation(byte[] shareCommitment,byte[] publicKey,Pairing pairing,Field G){
-        Element shareCommitmentElement = G.newElementFromBytes(shareCommitment);
-        Element publicKeyElement = G.newElementFromBytes(publicKey);
-        return pairing.pairing(shareCommitmentElement,publicKeyElement).getImmutable();
-    }
+        Element h = zr.newElement(2).getImmutable();
+        Map<Integer, byte[]> integerMap1 = polynomial.computePolynomialCoefficientsCommitment(h);
 
+        integerMap1.forEach((index,commit) -> {
+            System.out.println("a_" + index + "\t  commit " + zr.newElementFromBytes(commit));
+        });
+
+        polynomial.computeSharesCommitment(shares,h).forEach((id,comm) -> {
+            System.out.println("id = " + id + " share commit = " + zr.newElementFromBytes(comm));
+        });
+
+        System.out.println("polynomial = " + Arrays.toString(polynomial.coefficients));
+
+    }
 
 }

@@ -45,6 +45,7 @@ public class FetchPublicParameterResponseHandler extends SimpleChannelInboundHan
         requestPacket.setRole(Role.IDV);
         requestPacket.setListenPort(IDVerifierParamsFactory.listenPort);
         requestPacket.setHost(IDVerifierParamsFactory.HOST);
+        requestPacket.setDomain(IDVerifierParamsFactory.domain);
         return requestPacket;
     }
 }

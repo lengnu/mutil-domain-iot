@@ -2,7 +2,7 @@ package com.multi.domain.iot.verifier.starter;
 
 import com.multi.domain.iot.common.codec.PacketCodecHandler;
 import com.multi.domain.iot.common.domain.Domain;
-import com.multi.domain.iot.verifier.handler.request.UDDeliverVerifyInformationToIDVerifierRequestHandler;
+import com.multi.domain.iot.verifier.handler.request.UDAuthenticationMessageRequestHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -33,7 +33,7 @@ public class IDVerifierServerStarter {
 
 
     private final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
-    private final UDDeliverVerifyInformationToIDVerifierRequestHandler udDeliverVerifyInformationToIDVerifierRequestHandler = UDDeliverVerifyInformationToIDVerifierRequestHandler.INSTANCE;
+    private final UDAuthenticationMessageRequestHandler udAuthenticationMessageRequestHandler =UDAuthenticationMessageRequestHandler.INSTANCE;
 
     public void init() throws InterruptedException {
         NioEventLoopGroup boss = new NioEventLoopGroup();
@@ -50,7 +50,7 @@ public class IDVerifierServerStarter {
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
                         nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         nioSocketChannel.pipeline().addLast(packetCodecHandler);
-                        nioSocketChannel.pipeline().addLast(udDeliverVerifyInformationToIDVerifierRequestHandler);
+                        nioSocketChannel.pipeline().addLast(udAuthenticationMessageRequestHandler);
                     }
                 });
         ChannelFuture channelFuture = serverBootstrap.bind(listenPort).sync();

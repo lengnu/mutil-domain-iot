@@ -25,7 +25,8 @@ import java.util.Map;
 public class QueryAuditAgentAndIDVerifiersResponsePacket extends Packet {
     private Session auditAgentSession;
     private Map<Integer,Session> idVerifierSession;
-    private Domain domain;
+    private boolean success;
+    private String reason;
 
     @Override
     public byte getMessageType() {

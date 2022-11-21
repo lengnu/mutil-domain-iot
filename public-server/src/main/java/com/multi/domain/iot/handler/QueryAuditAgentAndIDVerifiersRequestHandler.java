@@ -3,7 +3,7 @@ package com.multi.domain.iot.handler;
 import com.multi.domain.iot.common.domain.Domain;
 import com.multi.domain.iot.common.protocol.request.QueryAuditAgentAndIDVerifiersRequestPacket;
 import com.multi.domain.iot.common.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
-import com.multi.domain.iot.common.session.SessionUtils;
+import com.multi.domain.iot.session.SessionUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -29,9 +29,14 @@ public class QueryAuditAgentAndIDVerifiersRequestHandler extends SimpleChannelIn
         Domain domain = requestPacket.getDomain();
         log.info("Detect UD query for registration information in domain {}",requestPacket.getDomain().getDomain());
         QueryAuditAgentAndIDVerifiersResponsePacket responsePacket = new QueryAuditAgentAndIDVerifiersResponsePacket();
-        responsePacket.setAuditAgentSession(SessionUtils.getAuditAgentSession());
-        responsePacket.setIdVerifierSession(SessionUtils.getIdVerifiersSessions(domain));
-        responsePacket.setDomain(requestPacket.getDomain());
+        if (SessionUtils.containsDomain(domain)){
+            responsePacket.setSuccess(true);
+            responsePacket.setAuditAgentSession(SessionUtils.getAuditAgentSession());
+            responsePacket.setIdVerifierSession(SessionUtils.getIdVerifiersSessions(domain));
+        }else {
+            responsePacket.setSuccess(false);
+            responsePacket.setReason("domain : " + domain.getDomain() + " not exists");
+        }
         ctx.writeAndFlush(responsePacket);
     }
 }

@@ -35,9 +35,9 @@ public interface MessageType {
     /**
      * UD发送验证信息请求
      */
-    byte UD_DELIVER_VERIFY_INFORMATION_TO_ID_VERIFIER_REQUEST = 7;
+    byte UD_AUTHENTICATION_MESSAGE_REQUEST = 7;
     /**
      * UD转发验证消息响应
      */
-    byte UD_DELIVER_VERIFY_INFORMATION_TO_ID_VERIFIER_RESPONSE = 8;
+    byte UD_AUTHENTICATION_MESSAGE_RESPONSE = 8;
 }

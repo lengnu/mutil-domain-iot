@@ -3,6 +3,7 @@ package com.multi.domain.iot.common.util;
 import lombok.extern.slf4j.Slf4j;
 
 import java.security.MessageDigest;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -46,6 +47,32 @@ public class ComputeUtils {
             log.error(e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * 将字符串转为指定长度数组，多了截取，少了补0
+     */
+    public static byte[] convertStringToFixLengthByteArray(String str,int length){
+        byte[] result = str.getBytes();
+        return Arrays.copyOf(result, length);
+    }
+
+    /**
+     *将多个数组拼接为1个数组返回，每个数组的拼接长度为singleArrayLength
+     */
+    public static byte[] concatByteArray(int singleArrayLength,byte[]... bytes){
+        int arrayNumber = bytes.length;
+        if (arrayNumber < 1){
+            return null;
+        }
+        if (arrayNumber == 1){
+            return bytes[0];
+        }
+        byte[] result = new byte[arrayNumber * singleArrayLength];
+        for (int i = 0; i < arrayNumber; i++) {
+            System.arraycopy(bytes[i],0,result,i * singleArrayLength,singleArrayLength);
+        }
+        return result;
     }
 
 

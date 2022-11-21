@@ -1,5 +1,6 @@
 package com.multi.domain.iot.ud.starter;
 
+import com.multi.domain.iot.common.domain.Domain;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,4 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UDServerStarter {
 
+    private final int listenPort;
+    private final Domain domain;
+
+    public UDServerStarter(int listenPort, Domain domain) {
+        this.listenPort = listenPort;
+        this.domain = domain;
+    }
 }

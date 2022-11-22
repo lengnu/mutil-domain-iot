@@ -1,7 +1,8 @@
-package com.multi.domain.iot.common.entity;
+package com.multi.domain.iot.common.message;
 
 import lombok.Data;
 
+import java.net.InetSocketAddress;
 import java.util.Map;
 
 /**
@@ -23,4 +24,7 @@ public class UDAuthenticationMessage {
     private Map<Integer,byte[]> publicKeySharesProtection;
     //使用份额承诺和公钥生成的验证信息
     private Map<Integer,byte[]> verifyInformation;
+    private int totalVerifiersNumber;
+    //消息的源，即ud的地址
+    private InetSocketAddress udAddress;
 }

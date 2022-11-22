@@ -1,5 +1,6 @@
 package com.multi.domain.iot.auditagent.starter;
 
+import com.multi.domain.iot.auditagent.handler.request.ConfirmAuthenticationMessageRequestHandler;
 import com.multi.domain.iot.common.codec.PacketCodecHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AuditAgentServerStarter {
     private final int listenPort;
     private final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
+    private final ConfirmAuthenticationMessageRequestHandler confirmAuthenticationMessageRequestHandler = ConfirmAuthenticationMessageRequestHandler.INSTANCE;
 
     public AuditAgentServerStarter(int port) throws InterruptedException {
         this.listenPort = port;
@@ -43,6 +45,7 @@ public class AuditAgentServerStarter {
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
                         nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         nioSocketChannel.pipeline().addLast(packetCodecHandler);
+                        nioSocketChannel.pipeline().addLast(confirmAuthenticationMessageRequestHandler);
                     }
                 });
         ChannelFuture channelFuture = serverBootstrap.bind(listenPort).sync();

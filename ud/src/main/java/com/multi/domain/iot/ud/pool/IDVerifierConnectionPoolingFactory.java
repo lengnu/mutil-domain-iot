@@ -3,7 +3,7 @@ package com.multi.domain.iot.ud.pool;
 import com.multi.domain.iot.common.codec.PacketCodecHandler;
 import com.multi.domain.iot.common.pool.ConnectionPoolingFactory;
 import com.multi.domain.iot.common.protocol.Packet;
-import com.multi.domain.iot.ud.handler.response.DeliverUDVerifyInformationToIDVerifierResponseHandler;
+import com.multi.domain.iot.ud.handler.response.UDAuthenticationMessageResponseHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -41,7 +41,7 @@ public class IDVerifierConnectionPoolingFactory extends ConnectionPoolingFactory
     @Override
     protected Channel doCreateChannel(InetSocketAddress inetSocketAddress) throws InterruptedException {
         final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
-        final DeliverUDVerifyInformationToIDVerifierResponseHandler uDDeliverUDVerifyInformationToIDVerifierResponseHandler = DeliverUDVerifyInformationToIDVerifierResponseHandler.INSTANCE;
+        final UDAuthenticationMessageResponseHandler uDUDAuthenticationMessageResponseHandler = UDAuthenticationMessageResponseHandler.INSTANCE;
         NioEventLoopGroup worker = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(worker)
@@ -54,7 +54,7 @@ public class IDVerifierConnectionPoolingFactory extends ConnectionPoolingFactory
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
                         nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         nioSocketChannel.pipeline().addLast(packetCodecHandler);
-                        nioSocketChannel.pipeline().addLast(uDDeliverUDVerifyInformationToIDVerifierResponseHandler);
+                        nioSocketChannel.pipeline().addLast(uDUDAuthenticationMessageResponseHandler);
 
                     }
                 });

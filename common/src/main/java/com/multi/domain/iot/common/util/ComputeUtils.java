@@ -1,7 +1,9 @@
 package com.multi.domain.iot.common.util;
 
+import it.unisa.dia.gas.jpbc.Field;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.xml.bind.Element;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Objects;
@@ -36,8 +38,9 @@ public class ComputeUtils {
 
     /**
      * 计算消息摘要
-     * @param data  消息
-     * @return  SHA512
+     *
+     * @param data 消息
+     * @return SHA512
      */
     public static byte[] sha512(byte[] data) {
         try {
@@ -52,27 +55,65 @@ public class ComputeUtils {
     /**
      * 将字符串转为指定长度数组，多了截取，少了补0
      */
-    public static byte[] convertStringToFixLengthByteArray(String str,int length){
+    public static byte[] convertStringToFixLengthByteArray(String str, int length) {
         byte[] result = str.getBytes();
         return Arrays.copyOf(result, length);
     }
 
     /**
-     *将多个数组拼接为1个数组返回，每个数组的拼接长度为singleArrayLength
+     * 将多个数组拼接为1个数组返回，每个数组的拼接长度为singleArrayLength
      */
-    public static byte[] concatByteArray(int singleArrayLength,byte[]... bytes){
+    public static byte[] concatByteArray(int singleArrayLength, byte[]... bytes) {
         int arrayNumber = bytes.length;
-        if (arrayNumber < 1){
+        if (arrayNumber < 1) {
             return null;
         }
-        if (arrayNumber == 1){
+        if (arrayNumber == 1) {
             return bytes[0];
         }
         byte[] result = new byte[arrayNumber * singleArrayLength];
         for (int i = 0; i < arrayNumber; i++) {
-            System.arraycopy(bytes[i],0,result,i * singleArrayLength,singleArrayLength);
+            System.arraycopy(bytes[i], 0, result, i * singleArrayLength, singleArrayLength);
         }
         return result;
+    }
+
+    /**
+     * 将多个数组拼接在一起
+     */
+    public static byte[] concatByteArray(byte[]... bytes) {
+        int totalByteArrayNumber = bytes.length;
+        if (totalByteArrayNumber < 1) {
+            return null;
+        }
+        if (totalByteArrayNumber == 1) {
+            return bytes[0];
+        }
+
+        int[] lengthArray = new int[totalByteArrayNumber];
+        int totalByteLength = 0;
+        for (int i = 0; i < totalByteArrayNumber; i++) {
+            int curByteArrayLength = bytes[i].length;
+            lengthArray[i] = curByteArrayLength;
+            totalByteLength += curByteArrayLength;
+        }
+
+        byte[] result = new byte[totalByteLength];
+        int startIndex = 0;
+        for (int i = 0; i < totalByteArrayNumber; i++) {
+            System.arraycopy(bytes[i], 0, result, startIndex, lengthArray[i]);
+            startIndex += lengthArray[i];
+        }
+        return result;
+    }
+
+    /***
+     * 将消息先经过sha512然后再转换到群Zq上
+     * 返回Zq上元素的字节
+     */
+    public static byte[] hashMessageToZq(byte[] data, Field Zq) {
+        byte[] hash = sha512(data);
+        return Zq.newElementFromBytes(hash).toBytes();
     }
 
 

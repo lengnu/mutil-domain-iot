@@ -28,6 +28,7 @@ public class EnrollInformationResponseHandler extends SimpleChannelInboundHandle
             IDVerifierParams idVerifierParams = IDVerifierParamsFactory.getInstance();
             idVerifierParams.setId(responsePacket.getId());
             idVerifierParams.writeSelfParamsToFile(IDVerifierParamsFactory.SELF_PARAMS_SAVE_PATH);
+            idVerifierParams.setAuditAgentSession(responsePacket.getAuditAgentSession());
             log.info("The id-Verifier self params are already saved in the file : {} ",IDVerifierParamsFactory.SELF_PARAMS_SAVE_PATH);
         }else {
             log.error(responsePacket.getReason());

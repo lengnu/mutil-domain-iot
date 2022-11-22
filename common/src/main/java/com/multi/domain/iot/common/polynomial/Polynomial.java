@@ -9,6 +9,7 @@ import it.unisa.dia.gas.plaf.jpbc.field.z.ZrField;
 import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
 import it.unisa.dia.gas.plaf.jpbc.pairing.a.TypeACurveGenerator;
 import lombok.Data;
+import org.apache.commons.codec.binary.Base64;
 
 import java.util.*;
 

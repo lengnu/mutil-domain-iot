@@ -1,17 +1,19 @@
 package com.multi.domain.iot.verifier.handler.request;
 
-import com.multi.domain.iot.common.entity.UDAuthenticationMessage;
+import com.multi.domain.iot.common.message.UDAuthenticationMessage;
+import com.multi.domain.iot.common.protocol.Packet;
+import com.multi.domain.iot.common.protocol.request.ConfirmAuthenticationMessageRequestPacket;
 import com.multi.domain.iot.common.protocol.request.UDAuthenticationMessageRequestPacket;
-import com.multi.domain.iot.verifier.param.IDVerifierParams;
+import com.multi.domain.iot.common.util.ComputeUtils;
+import com.multi.domain.iot.common.validator.Validator;
 import com.multi.domain.iot.verifier.param.IDVerifierParamsFactory;
+import com.multi.domain.iot.verifier.session.LocalSharesSessionUtils;
+import com.multi.domain.iot.verifier.validator.UDAuthenticationMessageValidator;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Map;
 
 /**
  * @BelongsProject: Multi-Domain-IoT
@@ -32,41 +34,45 @@ public class UDAuthenticationMessageRequestHandler extends SimpleChannelInboundH
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, UDAuthenticationMessageRequestPacket requestPacket) throws Exception {
-        log.info("Listen to the authentication information transmitted by the UD and start validating it");
-        UDAuthenticationMessage udAuthenticationMessage = requestPacket.getUdAuthenticationMessage();
-        System.out.println("hahahahahhaha");
-        //verify(udAuthenticationMessage);
+        log.info("Listen to the authentication information transmitted by the UD");
+        log.info("Start verifying the authentication information");
+        Validator validator = new UDAuthenticationMessageValidator(requestPacket.getUdAuthenticationMessage());
+        boolean verify = validator.verify();
+        Packet confirmMessagePacket = generateConfirmMessagePacket(verify, requestPacket.getUdAuthenticationMessage());
+        log.info("Send a confirmation message to auditAgent");
+        ctx.writeAndFlush(confirmMessagePacket);
     }
 
-    private boolean verify(UDAuthenticationMessage udAuthenticationMessage){
-        Map<Integer, byte[]> sharesCommitment = udAuthenticationMessage.getSharesCommitment();
-        Map<Integer, byte[]> polynomialCoefficientCommitment = udAuthenticationMessage.getPublicKeySharesProtection();
-        int id = 2;
-        IDVerifierParams idVerifierParams = IDVerifierParamsFactory.getInstance();
-        Field G1 = idVerifierParams.getG1();
-        Field Zq = idVerifierParams.getZq();
-        Element element = computeTemp(Zq.newElement(id).getImmutable(), polynomialCoefficientCommitment, 3);
-        System.out.println("---" + element.equals(G1.newElementFromBytes(sharesCommitment.get(id))));
-        return true;
-    }
-
-//    private boolean verifyShares(){
-//
-//    }
-
-    private Element computeTemp(Element i, Map<Integer,byte[]>  polynomialCoefficientCommitment,int t){
-        IDVerifierParams idVerifierParams = IDVerifierParamsFactory.getInstance();
-        Field G1 = idVerifierParams.getG1();
-        Field Zq = idVerifierParams.getZq();
-        Element result = G1.newOneElement();
-        for (Map.Entry<Integer,byte[]> coefficientCommitment : polynomialCoefficientCommitment.entrySet()){
-            Integer coefficientIndex = coefficientCommitment.getKey();
-            byte[] coefficientCommitmentValue = coefficientCommitment.getValue();
-            Element coefficientCommitmentValueElement = Zq.newElementFromBytes(coefficientCommitmentValue);
-            Element temp = i.powZn(Zq.newElement(coefficientCommitmentValueElement));
-            Element C_k = G1.newElementFromBytes(coefficientCommitmentValue).getImmutable();
-            result.mul(C_k);
+    //生成确认消息包
+    private Packet generateConfirmMessagePacket(boolean verify,UDAuthenticationMessage udAuthenticationMessage){
+        ConfirmAuthenticationMessageRequestPacket request = new ConfirmAuthenticationMessageRequestPacket();
+        request.setSuccess(verify);
+        request.setTotalVerifiersNumber(udAuthenticationMessage.getTotalVerifiersNumber());
+        request.setId(IDVerifierParamsFactory.getInstance().getId());
+        request.setUdAddress(udAuthenticationMessage.getUdAddress());
+        if (verify){
+            LocalSharesSessionUtils.bindSession(udAuthenticationMessage);
+            log.info("Authentication successful!");
+            byte[] confirmMessage = computeConfirmMessage(udAuthenticationMessage);
+            request.setConfirmInformation(confirmMessage);
+        }else {
+            log.error("Authentication failed!");
         }
-        return result;
+        return request;
+    }
+
+    /**
+     * 计算向auditAgent发送的确认消息
+     */
+    private byte[] computeConfirmMessage(UDAuthenticationMessage udAuthenticationMessage) {
+        return computeConfirmMessage(
+                udAuthenticationMessage.getPublicKeySharesProtection().get(IDVerifierParamsFactory.getInstance().getId()),
+                IDVerifierParamsFactory.getInstance().getXi().toBytes(),
+                IDVerifierParamsFactory.getInstance().getZq());
+    }
+
+    private byte[] computeConfirmMessage(byte[] publicKeyShareProtection, byte[] privateKey, Field Zq) {
+        byte[] bytes = ComputeUtils.concatByteArray(publicKeyShareProtection, privateKey);
+        return ComputeUtils.hashMessageToZq(bytes, Zq);
     }
 }

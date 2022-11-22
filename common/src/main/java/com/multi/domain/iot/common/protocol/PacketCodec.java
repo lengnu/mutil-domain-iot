@@ -1,10 +1,7 @@
 package com.multi.domain.iot.common.protocol;
 
-import com.multi.domain.iot.common.protocol.request.EnrollInformationRequestPacket;
+import com.multi.domain.iot.common.protocol.request.*;
 import com.multi.domain.iot.common.protocol.message.MessageType;
-import com.multi.domain.iot.common.protocol.request.FetchPublicParameterRequestPacket;
-import com.multi.domain.iot.common.protocol.request.QueryAuditAgentAndIDVerifiersRequestPacket;
-import com.multi.domain.iot.common.protocol.request.UDAuthenticationMessageRequestPacket;
 import com.multi.domain.iot.common.protocol.response.EnrollInformationResponsePacket;
 import com.multi.domain.iot.common.protocol.response.FetchPublicParameterResponsePacket;
 import com.multi.domain.iot.common.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
@@ -48,6 +45,7 @@ public class PacketCodec {
         packetTypeMap.put(MessageType.QUERY_AUDIT_AGENT_AND_ID_VERIFIERS_RESPONSE, QueryAuditAgentAndIDVerifiersResponsePacket.class);
         packetTypeMap.put(MessageType.UD_AUTHENTICATION_MESSAGE_REQUEST, UDAuthenticationMessageRequestPacket.class);
         packetTypeMap.put(MessageType.UD_AUTHENTICATION_MESSAGE_RESPONSE, UDAuthenticationMessageResponsePacket.class);
+        packetTypeMap.put(MessageType.CONFIRM_AUTHENTICATION_MESSAGE_REQUEST, ConfirmAuthenticationMessageRequestPacket.class);
     }
 
     /**

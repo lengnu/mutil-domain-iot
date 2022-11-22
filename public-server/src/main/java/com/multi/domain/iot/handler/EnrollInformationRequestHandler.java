@@ -2,11 +2,14 @@ package com.multi.domain.iot.handler;
 
 import com.multi.domain.iot.common.protocol.request.EnrollInformationRequestPacket;
 import com.multi.domain.iot.common.protocol.response.EnrollInformationResponsePacket;
+import com.multi.domain.iot.common.role.Role;
 import com.multi.domain.iot.session.SessionUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+
+import java.net.InetSocketAddress;
 
 /**
  * @BelongsProject: Multi-Domain-IoT
@@ -18,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ChannelHandler.Sharable
 public class EnrollInformationRequestHandler extends SimpleChannelInboundHandler<EnrollInformationRequestPacket> {
-    private EnrollInformationRequestHandler(){
+    private EnrollInformationRequestHandler() {
 
     }
 
@@ -29,14 +32,17 @@ public class EnrollInformationRequestHandler extends SimpleChannelInboundHandler
     protected void channelRead0(ChannelHandlerContext ctx, EnrollInformationRequestPacket requestPacket) throws Exception {
         int id = SessionUtils.bindSession(requestPacket);
         EnrollInformationResponsePacket packet = new EnrollInformationResponsePacket();
-        if (id < 0){
+        if (id < 0) {
             packet.setSuccess(false);
             packet.setReason("AuditAgent cannot be registered repeatedly");
-        }else {
+        } else {
             packet.setId(id);
             packet.setSuccess(true);
         }
-        log.info("Listen to {} registration",requestPacket.getRole().getRole());
+        if (requestPacket.getRole() == Role.IDV) {
+            packet.setAuditAgentSession(SessionUtils.getAuditAgentSession());
+        }
+        log.info("Listen to {} registration", requestPacket.getRole().getRole());
         ctx.writeAndFlush(packet);
     }
 

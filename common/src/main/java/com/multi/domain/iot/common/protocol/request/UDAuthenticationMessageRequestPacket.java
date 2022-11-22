@@ -1,6 +1,6 @@
 package com.multi.domain.iot.common.protocol.request;
 
-import com.multi.domain.iot.common.entity.UDAuthenticationMessage;
+import com.multi.domain.iot.common.message.UDAuthenticationMessage;
 import com.multi.domain.iot.common.protocol.Packet;
 import com.multi.domain.iot.common.protocol.message.MessageType;
 import lombok.Data;

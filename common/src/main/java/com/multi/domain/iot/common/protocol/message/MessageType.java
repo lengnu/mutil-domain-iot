@@ -40,4 +40,8 @@ public interface MessageType {
      * UD转发验证消息响应
      */
     byte UD_AUTHENTICATION_MESSAGE_RESPONSE = 8;
+    /**
+     * IDV向AA发送的确认消息请求
+     */
+    byte CONFIRM_AUTHENTICATION_MESSAGE_REQUEST = 9;
 }

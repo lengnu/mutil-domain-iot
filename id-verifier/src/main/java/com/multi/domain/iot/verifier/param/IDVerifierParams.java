@@ -2,6 +2,7 @@ package com.multi.domain.iot.verifier.param;
 
 import com.multi.domain.iot.common.domain.Domain;
 import com.multi.domain.iot.common.param.PublicParams;
+import com.multi.domain.iot.common.session.Session;
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
 import it.unisa.dia.gas.jpbc.Pairing;
@@ -9,6 +10,7 @@ import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
 import lombok.Data;
 import org.apache.commons.codec.binary.Base64;
 
+import java.net.InetSocketAddress;
 import java.util.Properties;
 
 
@@ -36,6 +38,8 @@ public class IDVerifierParams extends PublicParams {
     private String host;
     //域
     private Domain domain;
+    //审计代理的信息
+    private Session auditAgentSession;
 
     @Override
     protected void autowireSelfParamsToProperties(Properties properties) {

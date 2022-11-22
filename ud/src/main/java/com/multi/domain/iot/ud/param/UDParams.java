@@ -1,7 +1,7 @@
 package com.multi.domain.iot.ud.param;
 
 import com.multi.domain.iot.common.domain.Domain;
-import com.multi.domain.iot.common.entity.UDAuthenticationMessage;
+import com.multi.domain.iot.common.message.UDAuthenticationMessage;
 import com.multi.domain.iot.common.param.PublicParams;
 import com.multi.domain.iot.common.polynomial.Polynomial;
 import com.multi.domain.iot.common.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
@@ -80,6 +80,15 @@ public class UDParams extends PublicParams {
         });
     }
 
+    //TODO
+    public void saveOtherInformationForTest(){
+        log.info("store public Key for test");
+        this.verifiersPublicKey.put(1,new byte[]{1,2,3,4});
+        this.verifiersPublicKey.put(2,new byte[]{1,2,3,4});
+        this.verifiersPublicKey.put(3,new byte[]{1,2,3,4});
+    }
+
+
     /**
      * 生成所有的认证信息,需要传入多项式的阶，默认阶为所有验证者数量的一半
      */
@@ -96,7 +105,7 @@ public class UDParams extends PublicParams {
         //3.构建随机多项式
         computeRandomPolynomial(polynomialOrder);
         //4.为每个身份验证者计算多项式份额
-        computeShares(this.verifiersSession.keySet());
+        computeShares(this.verifiersPublicKey.keySet());
         //5.计算对多项式系数的承诺
         computePolynomialCoefficientsCommitment();
         //6.计算对于验证者每个份额的承诺
@@ -105,6 +114,16 @@ public class UDParams extends PublicParams {
         computePublicKeySharesProtection();
         //8.计算验证信息
         computeVerifiersInformation();
+        //9.设置总的验证者数量
+        this.udAuthenticationMessage.setTotalVerifiersNumber(this.verifiersSession.size());
+        //10.设置用户的唯一标识-用其身份隐私保护信息生成
+        this.udAuthenticationMessage.setUdAddress(new InetSocketAddress(this.host,this.listenPort));
+    }
+
+    //TODO
+    //计算用户的标识，返回20位字符串
+    private String computeUid(byte[] data){
+        return Base64.encodeBase64String(data).substring(0,20);
     }
 
     private void computeRandomPolynomial(int order) {

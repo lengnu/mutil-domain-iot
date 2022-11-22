@@ -27,7 +27,7 @@ public class QueryAuditAgentAndIDVerifiersRequestHandler extends SimpleChannelIn
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, QueryAuditAgentAndIDVerifiersRequestPacket requestPacket) throws Exception {
         Domain domain = requestPacket.getDomain();
-        log.info("Detect UD query for registration information in domain {}",requestPacket.getDomain().getDomain());
+        log.info("Detect UD query for verifiers' information in domain {}",requestPacket.getDomain().getDomain());
         QueryAuditAgentAndIDVerifiersResponsePacket responsePacket = new QueryAuditAgentAndIDVerifiersResponsePacket();
         if (SessionUtils.containsDomain(domain)){
             responsePacket.setSuccess(true);

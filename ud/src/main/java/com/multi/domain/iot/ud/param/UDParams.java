@@ -15,6 +15,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.util.*;
 
@@ -67,6 +68,9 @@ public class UDParams extends PublicParams {
     private Map<Integer, byte[]> verifiersPublicKey = new HashMap<>();
     private Map<Integer, InetSocketAddress> verifiersAddress = new HashMap<>();
 
+    //假名
+    private byte[] PID;
+
     /**
      * 将系统中升级代理和请求域的验证者信息存储到本地
      */
@@ -79,15 +83,6 @@ public class UDParams extends PublicParams {
             this.verifiersAddress.put(id, new InetSocketAddress(session.getHost(), session.getListenPort()));
         });
     }
-
-    //TODO
-    public void saveOtherInformationForTest(){
-        log.info("store public Key for test");
-        this.verifiersPublicKey.put(1,new byte[]{1,2,3,4});
-        this.verifiersPublicKey.put(2,new byte[]{1,2,3,4});
-        this.verifiersPublicKey.put(3,new byte[]{1,2,3,4});
-    }
-
 
     /**
      * 生成所有的认证信息,需要传入多项式的阶，默认阶为所有验证者数量的一半
@@ -118,12 +113,6 @@ public class UDParams extends PublicParams {
         this.udAuthenticationMessage.setTotalVerifiersNumber(this.verifiersSession.size());
         //10.设置用户的唯一标识-用其身份隐私保护信息生成
         this.udAuthenticationMessage.setUdAddress(new InetSocketAddress(this.host,this.listenPort));
-    }
-
-    //TODO
-    //计算用户的标识，返回20位字符串
-    private String computeUid(byte[] data){
-        return Base64.encodeBase64String(data).substring(0,20);
     }
 
     private void computeRandomPolynomial(int order) {
@@ -294,6 +283,13 @@ public class UDParams extends PublicParams {
         this.id = 2343;
         this.email = "12321.@qq.com";
         this.phone = "123324788345";
+    }
+
+    public void writePIDToFile(String filePath) throws IOException {
+        OutputStream outputStream = new FileOutputStream(filePath,true);
+        Properties properties = new Properties();
+        properties.setProperty("PID",Base64.encodeBase64String(this.PID));
+        properties.store(outputStream,"store PID");
     }
 
 

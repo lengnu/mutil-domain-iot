@@ -88,36 +88,12 @@ public class UDAuthenticationMessageValidator implements Validator {
                                             Field G,
                                             Field GT,
                                             Element h) {
-        Element left = calculateMultiplication(verifyInformation.values(), GT);
-        Element right = pairing.pairing(h, calculateAccumulation(publicKeySharesProtection.values(), G));
+        Element left = ComputeUtils.calculateMultiplication(verifyInformation.values(), GT);
+        Element right = pairing.pairing(h, ComputeUtils.calculateAccumulation(publicKeySharesProtection.values(), G));
         return left.equals(right);
     }
 
-    /**
-     * 在Field上计算累乘，要求乘法群
-     */
-    private Element calculateMultiplication(Collection<byte[]> elements, Field field) {
-        //乘法单位元为1
-        Element unitElement = field.newOneElement();
-        elements.forEach((elementByte) -> {
-            Element element = field.newElementFromBytes(elementByte);
-            unitElement.mul(element);
-        });
-        return unitElement;
-    }
 
-    /**
-     * 在Field上计算累加,要求加法群
-     */
-    private Element calculateAccumulation(Collection<byte[]> elements, Field field) {
-        //加法单位元为0
-        Element unitElement = field.newZeroElement();
-        elements.forEach((elementByte) -> {
-            Element element = field.newElementFromBytes(elementByte);
-            unitElement.add(element);
-        });
-        return unitElement;
-    }
 
 
     private boolean verifyShareCorrectness(Map<Integer, byte[]> polynomialCoefficientsCommitment, int i,

@@ -17,7 +17,7 @@
     <property name="log.max.size" value="500MB"/>
     <!-- 定义日志输出格式-->
     <property name="log.pattern"
-              value="%red(%date{yyyy-MM-dd HH:mm:ss}) %highlight(%-5level) %red([%thread]) %boldMagenta(%logger{50}) %cyan(%msg%n)"/>
+              value="%red(%date{yyyy-MM-dd HH:mm:ss})  %cyan(%msg%n)"/>
     <property name="log.charset" value="UTF-8"/>
 
     <!--控制台输出 -->

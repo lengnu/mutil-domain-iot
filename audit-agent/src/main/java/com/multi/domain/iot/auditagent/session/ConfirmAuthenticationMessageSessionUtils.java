@@ -3,10 +3,7 @@ package com.multi.domain.iot.auditagent.session;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -24,6 +21,10 @@ public class ConfirmAuthenticationMessageSessionUtils {
     private static final Set<String> FINISH_AUTHENTICATION_UD_MAP = new HashSet<>();
 
     private static final Set<String> FAILURE_CONFIRM_MESSAGE = new HashSet<>();
+
+    public static Collection<byte[]> getConfirmsInformation(String uid){
+        return UD_CONFIRM_AUTHENTICATION_MESSAGE_MAP.get(uid).values();
+    }
 
     public synchronized static void receiveOneConfirmMessage(String uid, Integer verifierId, byte[] confirmMessage, int totalVerifiersNumber, boolean success) {
         if (!success) {

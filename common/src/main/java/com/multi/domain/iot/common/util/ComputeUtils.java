@@ -1,11 +1,12 @@
 package com.multi.domain.iot.common.util;
 
+import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.xml.bind.Element;
 import java.security.MessageDigest;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -111,10 +112,44 @@ public class ComputeUtils {
      * 将消息先经过sha512然后再转换到群Zq上
      * 返回Zq上元素的字节
      */
-    public static byte[] hashMessageToZq(byte[] data, Field Zq) {
+    public static Element hashMessageToZq(byte[] data, Field Zq) {
         byte[] hash = sha512(data);
-        return Zq.newElementFromBytes(hash).toBytes();
+        return Zq.newElementFromBytes(hash).getImmutable();
     }
 
+
+    /**
+     * 在Field上计算累乘，要求乘法群
+     */
+    public static it.unisa.dia.gas.jpbc.Element calculateMultiplication(Collection<byte[]> elements, Field field) {
+        //乘法单位元为1
+        it.unisa.dia.gas.jpbc.Element unitElement = field.newOneElement();
+        elements.forEach((elementByte) -> {
+            it.unisa.dia.gas.jpbc.Element element = field.newElementFromBytes(elementByte);
+            unitElement.mul(element);
+        });
+        return unitElement.getImmutable();
+    }
+
+    /**
+     * 在Field上计算累加,要求加法群
+     */
+    public static it.unisa.dia.gas.jpbc.Element calculateAccumulation(Collection<byte[]> elements, Field field) {
+        //加法单位元为0
+        it.unisa.dia.gas.jpbc.Element unitElement = field.newZeroElement();
+        elements.forEach((elementByte) -> {
+            Element element = field.newElementFromBytes(elementByte);
+            unitElement.add(element);
+        });
+        return unitElement.getImmutable();
+    }
+
+    /**
+     * 将元素从G -> Zq(单向Hash)
+     */
+    public static Element H3(Element element,Field Zq){
+        byte[] temp = sha512(element.toBytes());
+        return Zq.newElementFromBytes(temp).getImmutable();
+    }
 
 }

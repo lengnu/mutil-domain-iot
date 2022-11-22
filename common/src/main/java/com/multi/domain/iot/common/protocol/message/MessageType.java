@@ -44,4 +44,16 @@ public interface MessageType {
      * IDV向AA发送的确认消息请求
      */
     byte CONFIRM_AUTHENTICATION_MESSAGE_REQUEST = 9;
+    /**
+     * IDV向AA发送的确认消息响应
+     */
+    byte CONFIRM_AUTHENTICATION_MESSAGE_RESPONSE = 10;
+    /**
+     * AA向UD返回假名请求
+     */
+    byte AUDIT_AGENT_RETURN_PID_REQUEST = 11;
+    /**
+     * AA向UD返回假名的响应
+     */
+    byte AUDIT_AGENT_RETURN_PID_RESPONSE = 12;
 }

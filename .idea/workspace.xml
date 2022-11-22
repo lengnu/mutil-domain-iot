@@ -1,48 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3ea7315-3b56-482b-95f6-18ecdbb3aeef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/request/ConfirmAuthenticationMessageRequestPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/validator/Validator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/session/LocalSharesSessionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/validator/UDAuthenticationMessageValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/test/LocalValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/test/PrintTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/starter/AuditAgentServerStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/starter/AuditAgentServerStarter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/calculator/PIDCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/response/AuditAgentReturnPIDResponseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/pool/UDConnectionPoolingFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/request/AuditAgentReturnPIDRequestPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/response/AuditAgentReturnPIDResponsePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/response/ConfirmAuthenticationMessageResponsePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/response/ConfirmAuthenticationMessageResponseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/pool/AuditAgentConnectionPollingFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/request/AuditAgentReturnPIDRequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/validator/PIDValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auditAgentParams-public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auditAgentParams-public.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auditAgentParams-self.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auditAgentParams-self.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/entity/UDAuthenticationMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/message/UDAuthenticationMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/polynomial/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/polynomial/Polynomial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/PacketCodec.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/PacketCodec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/message/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/request/UDAuthenticationMessageRequestPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/request/UDAuthenticationMessageRequestPacket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/util/ComputeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/util/ComputeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/polynomial/Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/polynomial/Polynomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/entity/UDAuthenticationMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/PacketCodec.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/PacketCodec.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/message/MessageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/message/MessageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/request/UDAuthenticationMessageRequestPacket.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/request/UDAuthenticationMessageRequestPacket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/response/EnrollInformationResponsePacket.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/response/EnrollInformationResponsePacket.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/util/ComputeUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/util/ComputeUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/id-Verifier-public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-Verifier-public.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/id-Verifier-self.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-Verifier-self.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/validator/UDAuthenticationMessageValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/validator/UDAuthenticationMessageValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/resources/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/response/EnrollInformationResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/response/EnrollInformationResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/param/IDVerifierParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/param/IDVerifierParams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/validator/UDAuthenticationMessageValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/validator/UDAuthenticationMessageValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/handler/QueryAuditAgentAndIDVerifiersRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/handler/QueryAuditAgentAndIDVerifiersRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/handler/EnrollInformationRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/handler/EnrollInformationRequestHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/public.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ud-public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud-public.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ud-self.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud-self.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/DeliverUDVerifyInformationToIDVerifierResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/UDAuthenticationMessageResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/response/EnrollInformationResponseHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/pool/IDVerifierConnectionPoolingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/pool/IDVerifierConnectionPoolingFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/EnrollInformationResponseHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/QueryAuditAgentAndIDVerifiersResponseHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDParams.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/pool/IDVerifierConnectionPoolingFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/pool/IDVerifierConnectionPoolingFactory$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/pool/IDVerifierConnectionPoolingFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/pool/IDVerifierConnectionPoolingFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDStarter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDClientStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDClientStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDServerStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDServerStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/response/DeliverUDVerifyInformationToIDVerifierResponseHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDClientStarter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDClientStarter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDClientStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDClientStarter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDServerStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDServerStarter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +70,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -83,17 +96,23 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2Hekoo8JUAIxypSjbOqCVrudAgX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public-server/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/audit-agent/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -102,10 +121,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\public-server\src\main\resources" />
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\public-common" />
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\audit-agent" />
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\public-server" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\audit-agent\src\main\resources" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\id-verifier\src\main\resources" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\ud\src\main\resources" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\ud" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\ud\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\001\Desktop\Multi-Domain-IoT" />
@@ -113,10 +133,10 @@
       <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\public-common\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.multi.domain.iot.common.util" />
+      <recent name="com.multi.domain.iot.starter" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UDStarter">
+  <component name="RunManager" selected="Application.IDVerifierStarter">
     <configuration name="AuditAgentStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.auditagent.starter.AuditAgentStarter" />
       <module name="audit-agent" />
@@ -131,25 +151,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ComputeUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.common.util.ComputeUtils" />
-      <module name="common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.multi.domain.iot.common.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ConfirmAuthenticationMessageSessionUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.auditagent.session.ConfirmAuthenticationMessageSessionUtils" />
+    <configuration name="AuditAgentStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.auditagent.starter.AuditAgentStarter" />
       <module name="audit-agent" />
+      <option name="PROGRAM_PARAMETERS" value="7778" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.multi.domain.iot.auditagent.session.*" />
+          <option name="PATTERN" value="com.multi.domain.iot.auditagent.starter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -157,9 +165,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PublicServerStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.starter.PublicServerStarter" />
-      <module name="public-server" />
+    <configuration name="IDVerifierStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.starter.IDVerifierStarter" />
+      <module name="id-verifier" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.multi.domain.iot.starter.*" />
@@ -170,10 +178,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UDStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="IDVerifierStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.verifier.starter.IDVerifierStarter" />
+      <module name="id-verifier" />
+      <option name="PROGRAM_PARAMETERS" value="5559 A" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.multi.domain.iot.verifier.starter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.ud.starter.UDStarter" />
       <module name="ud" />
-      <option name="PROGRAM_PARAMETERS" value="6662 A" />
+      <option name="PROGRAM_PARAMETERS" value="4444 A" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.multi.domain.iot.ud.starter.*" />
@@ -186,19 +208,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.IDVerifierStarter" />
-      <item itemvalue="Application.PublicServerStarter" />
       <item itemvalue="Application.AuditAgentStarter" />
       <item itemvalue="Application.UDStarter" />
-      <item itemvalue="Application.ComputeUtils" />
-      <item itemvalue="Application.ConfirmAuthenticationMessageSessionUtils" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.UDStarter" />
         <item itemvalue="Application.AuditAgentStarter" />
-        <item itemvalue="Application.PublicServerStarter" />
-        <item itemvalue="Application.ConfirmAuthenticationMessageSessionUtils" />
-        <item itemvalue="Application.ComputeUtils" />
+        <item itemvalue="Application.IDVerifierStarter" />
       </list>
     </recent_temporary>
   </component>
@@ -210,11 +227,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668653115094</updated>
-      <workItem from="1668653116597" duration="14353000" />
-      <workItem from="1668732911930" duration="6535000" />
-      <workItem from="1668764614118" duration="217000" />
-      <workItem from="1668992066741" duration="28674000" />
-      <workItem from="1669078585712" duration="18988000" />
+      <workItem from="1668653116597" duration="14193000" />
+      <workItem from="1668689389593" duration="1104000" />
+      <workItem from="1668696557201" duration="4447000" />
+      <workItem from="1668857243699" duration="1239000" />
+      <workItem from="1668942636259" duration="14749000" />
+      <workItem from="1669031841780" duration="12264000" />
+      <workItem from="1669117438987" duration="14947000" />
     </task>
     <servers />
   </component>
@@ -231,5 +250,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/pool/ConnectionPoolingFactory.java</url>
+          <line>36</line>
+          <properties class="com.multi.domain.iot.common.pool.ConnectionPoolingFactory" method="doCreateChannel">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

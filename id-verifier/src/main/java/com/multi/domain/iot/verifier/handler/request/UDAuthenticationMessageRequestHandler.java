@@ -7,6 +7,7 @@ import com.multi.domain.iot.common.protocol.request.UDAuthenticationMessageReque
 import com.multi.domain.iot.common.util.ComputeUtils;
 import com.multi.domain.iot.common.validator.Validator;
 import com.multi.domain.iot.verifier.param.IDVerifierParamsFactory;
+import com.multi.domain.iot.verifier.pool.AuditAgentConnectionPollingFactory;
 import com.multi.domain.iot.verifier.session.LocalSharesSessionUtils;
 import com.multi.domain.iot.verifier.validator.UDAuthenticationMessageValidator;
 import io.netty.channel.ChannelHandler;
@@ -14,6 +15,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import it.unisa.dia.gas.jpbc.Field;
 import lombok.extern.slf4j.Slf4j;
+
+import java.net.InetSocketAddress;
 
 /**
  * @BelongsProject: Multi-Domain-IoT
@@ -40,7 +43,12 @@ public class UDAuthenticationMessageRequestHandler extends SimpleChannelInboundH
         boolean verify = validator.verify();
         Packet confirmMessagePacket = generateConfirmMessagePacket(verify, requestPacket.getUdAuthenticationMessage());
         log.info("Send a confirmation message to auditAgent");
-        ctx.writeAndFlush(confirmMessagePacket);
+        AuditAgentConnectionPollingFactory.INSTANCE.getChannel(
+                new InetSocketAddress(
+                        IDVerifierParamsFactory.getInstance().getAuditAgentSession().getHost(),
+                        IDVerifierParamsFactory.getInstance().getAuditAgentSession().getListenPort()
+                )
+        ).writeAndFlush(confirmMessagePacket);
     }
 
     //生成确认消息包
@@ -50,6 +58,7 @@ public class UDAuthenticationMessageRequestHandler extends SimpleChannelInboundH
         request.setTotalVerifiersNumber(udAuthenticationMessage.getTotalVerifiersNumber());
         request.setId(IDVerifierParamsFactory.getInstance().getId());
         request.setUdAddress(udAuthenticationMessage.getUdAddress());
+        request.setIdentityProtectionInformation(udAuthenticationMessage.getIdentityProtectionInformation());
         if (verify){
             LocalSharesSessionUtils.bindSession(udAuthenticationMessage);
             log.info("Authentication successful!");
@@ -73,6 +82,6 @@ public class UDAuthenticationMessageRequestHandler extends SimpleChannelInboundH
 
     private byte[] computeConfirmMessage(byte[] publicKeyShareProtection, byte[] privateKey, Field Zq) {
         byte[] bytes = ComputeUtils.concatByteArray(publicKeyShareProtection, privateKey);
-        return ComputeUtils.hashMessageToZq(bytes, Zq);
+        return ComputeUtils.hashMessageToZq(bytes, Zq).toBytes();
     }
 }

@@ -2,10 +2,7 @@ package com.multi.domain.iot.common.protocol;
 
 import com.multi.domain.iot.common.protocol.request.*;
 import com.multi.domain.iot.common.protocol.message.MessageType;
-import com.multi.domain.iot.common.protocol.response.EnrollInformationResponsePacket;
-import com.multi.domain.iot.common.protocol.response.FetchPublicParameterResponsePacket;
-import com.multi.domain.iot.common.protocol.response.QueryAuditAgentAndIDVerifiersResponsePacket;
-import com.multi.domain.iot.common.protocol.response.UDAuthenticationMessageResponsePacket;
+import com.multi.domain.iot.common.protocol.response.*;
 import com.multi.domain.iot.common.serialize.Serializer;
 import com.multi.domain.iot.common.serialize.impl.JsonSerializer;
 import io.netty.buffer.ByteBuf;
@@ -46,6 +43,9 @@ public class PacketCodec {
         packetTypeMap.put(MessageType.UD_AUTHENTICATION_MESSAGE_REQUEST, UDAuthenticationMessageRequestPacket.class);
         packetTypeMap.put(MessageType.UD_AUTHENTICATION_MESSAGE_RESPONSE, UDAuthenticationMessageResponsePacket.class);
         packetTypeMap.put(MessageType.CONFIRM_AUTHENTICATION_MESSAGE_REQUEST, ConfirmAuthenticationMessageRequestPacket.class);
+        packetTypeMap.put(MessageType.CONFIRM_AUTHENTICATION_MESSAGE_RESPONSE, ConfirmAuthenticationMessageResponsePacket.class);
+        packetTypeMap.put(MessageType.AUDIT_AGENT_RETURN_PID_REQUEST, AuditAgentReturnPIDRequestPacket.class);
+        packetTypeMap.put(MessageType.AUDIT_AGENT_RETURN_PID_RESPONSE, AuditAgentReturnPIDResponsePacket.class);
     }
 
     /**

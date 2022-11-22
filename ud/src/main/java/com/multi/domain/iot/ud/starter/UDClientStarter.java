@@ -30,7 +30,6 @@ public class UDClientStarter {
 
     private final PacketCodecHandler packetCodecHandler = PacketCodecHandler.INSTANCE;
     private final FetchPublicParameterResponseHandler fetchPublicParameterResponseHandler = FetchPublicParameterResponseHandler.INSTANCE;
-    //private final EnrollInformationResponseHandler enrollInformationResponseHandler = EnrollInformationResponseHandler.INSTANCE;
     private final QueryAuditAgentAndIDVerifiersResponseHandler queryAuditAgentAndIDVerifiersResponseHandler = QueryAuditAgentAndIDVerifiersResponseHandler.INSTANCE;
 
     public UDClientStarter() throws InterruptedException {
@@ -51,7 +50,6 @@ public class UDClientStarter {
                         nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         nioSocketChannel.pipeline().addLast(packetCodecHandler);
                         nioSocketChannel.pipeline().addLast(fetchPublicParameterResponseHandler);
-                        //nioSocketChannel.pipeline().addLast(enrollInformationResponseHandler);
                         nioSocketChannel.pipeline().addLast(queryAuditAgentAndIDVerifiersResponseHandler);
                     }
                 });

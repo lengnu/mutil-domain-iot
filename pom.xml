@@ -38,12 +38,6 @@
                 <artifactId>fastjson</artifactId>
                 <version>1.2.79</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.github.emilianobonassi/jpbc -->
-            <dependency>
-                <groupId>com.github.emilianobonassi</groupId>
-                <artifactId>jpbc</artifactId>
-                <version>2.0.0</version>
-            </dependency>
             <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
@@ -53,6 +47,16 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>1.2.11</version>
+            </dependency>
+            <dependency>
+                <groupId>it.unisa.dia.gas</groupId>
+                <artifactId>jpbc-api</artifactId>
+                <version>2.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>it.unisa.dia.gas</groupId>
+                <artifactId>jpbc-plaf</artifactId>
+                <version>2.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,6 +1,7 @@
 package com.multi.domain.iot.auditagent.handler.response;
 
 import com.multi.domain.iot.common.protocol.response.AuditAgentReturnPIDResponsePacket;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.Data;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
  * @description UD验证AA生成的PID之后，返回是否成功，然后AA执行下面处理
  */
 @Slf4j
+@ChannelHandler.Sharable
 public class AuditAgentReturnPIDResponseHandler extends SimpleChannelInboundHandler<AuditAgentReturnPIDResponsePacket> {
    private AuditAgentReturnPIDResponseHandler(){}
 

@@ -59,6 +59,7 @@ public class UDAuthenticationMessageRequestHandler extends SimpleChannelInboundH
         request.setId(IDVerifierParamsFactory.getInstance().getId());
         request.setUdAddress(udAuthenticationMessage.getUdAddress());
         request.setIdentityProtectionInformation(udAuthenticationMessage.getIdentityProtectionInformation());
+        request.setDomain(udAuthenticationMessage.getDomain());
         if (verify){
             LocalSharesSessionUtils.bindSession(udAuthenticationMessage);
             log.info("Authentication successful!");

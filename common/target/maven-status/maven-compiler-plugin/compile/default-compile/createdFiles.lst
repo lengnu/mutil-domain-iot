@@ -10,16 +10,13 @@ com\multi\domain\iot\common\role\Role.class
 com\multi\domain\iot\common\polynomial\Polynomial.class
 com\multi\domain\iot\common\protocol\response\QueryAuditAgentAndIDVerifiersResponsePacket.class
 com\multi\domain\iot\common\pool\ConnectionPoolingFactory.class
-com\multi\domain\iot\common\protocol\request\UDDeliverVerifyInformationToIDVerifierRequestPacket.class
 com\multi\domain\iot\common\serialize\SerializeAlgorithm.class
-com\multi\domain\iot\common\protocol\response\UDDeliverVerifyInformationToIDVerifierResponsePacket.class
 com\multi\domain\iot\common\protocol\response\FetchPublicParameterResponsePacket.class
 com\multi\domain\iot\common\protocol\request\FetchPublicParameterRequestPacket.class
 com\multi\domain\iot\common\protocol\Packet.class
 com\multi\domain\iot\common\pool\ConnectionPooling.class
 com\multi\domain\iot\common\protocol\PacketCodec.class
 com\multi\domain\iot\common\param\PublicParams.class
-com\multi\domain\iot\common\entity\UDAllVerifyInformation.class
 com\multi\domain\iot\common\protocol\request\EnrollInformationRequestPacket.class
 com\multi\domain\iot\common\param\EnrollInformationOnPublicServer.class
 com\multi\domain\iot\common\protocol\request\QueryAuditAgentAndIDVerifiersRequestPacket.class

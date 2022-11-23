@@ -1,5 +1,6 @@
 package com.multi.domain.iot.auditagent.session;
 
+import com.multi.domain.iot.common.domain.Domain;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 
@@ -26,7 +27,7 @@ public class ConfirmAuthenticationMessageSessionUtils {
         return UD_CONFIRM_AUTHENTICATION_MESSAGE_MAP.get(uid).values();
     }
 
-    public synchronized static void receiveOneConfirmMessage(String uid, Integer verifierId, byte[] confirmMessage, int totalVerifiersNumber, boolean success) {
+    public synchronized static void receiveOneConfirmMessage(String uid, Integer verifierId, byte[] confirmMessage, int totalVerifiersNumber, boolean success, Domain domain) {
         if (!success) {
             FINISH_AUTHENTICATION_UD_MAP.add(uid);
             log.info("The authentication of a verifier was not passed,confirm failed!");
@@ -34,7 +35,7 @@ public class ConfirmAuthenticationMessageSessionUtils {
         }
         Map<Integer, byte[]> map = UD_CONFIRM_AUTHENTICATION_MESSAGE_MAP.get(uid);
         map.put(verifierId, confirmMessage);
-        log.info("To receive an confirm message from verifier {}, {} more messages are required!", verifierId, totalVerifiersNumber - map.size());
+        log.info("To receive an confirm message from verifier {} in domain {}, {} more messages are required!", verifierId, domain.getDomain(),totalVerifiersNumber - map.size());
     }
 
     public synchronized static void bindSession(String uid) {

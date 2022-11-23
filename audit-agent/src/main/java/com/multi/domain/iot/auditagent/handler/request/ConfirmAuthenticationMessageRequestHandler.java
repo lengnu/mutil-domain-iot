@@ -67,7 +67,7 @@ public class ConfirmAuthenticationMessageRequestHandler extends SimpleChannelInb
                     }
                 }, 5, TimeUnit.SECONDS);
             }
-            ConfirmAuthenticationMessageSessionUtils.receiveOneConfirmMessage(uid, verifierId, confirmInformation, totalConfirmNumber, success);
+            ConfirmAuthenticationMessageSessionUtils.receiveOneConfirmMessage(uid, verifierId, confirmInformation, totalConfirmNumber, success,requestPacket.getDomain());
         }
         ctx.writeAndFlush(new ConfirmAuthenticationMessageResponsePacket());
     }

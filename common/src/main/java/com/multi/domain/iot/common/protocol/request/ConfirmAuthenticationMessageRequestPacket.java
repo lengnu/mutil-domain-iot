@@ -1,5 +1,6 @@
 package com.multi.domain.iot.common.protocol.request;
 
+import com.multi.domain.iot.common.domain.Domain;
 import com.multi.domain.iot.common.protocol.Packet;
 import com.multi.domain.iot.common.protocol.message.MessageType;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class ConfirmAuthenticationMessageRequestPacket extends Packet {
     private int totalVerifiersNumber;
     //是哪个UD的消息
     private InetSocketAddress udAddress;
+    private Domain domain;
     @Override
     public byte getMessageType() {
         return MessageType.CONFIRM_AUTHENTICATION_MESSAGE_REQUEST;

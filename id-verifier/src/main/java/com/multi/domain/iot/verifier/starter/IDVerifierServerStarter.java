@@ -55,9 +55,9 @@ public class IDVerifierServerStarter {
                 });
         ChannelFuture channelFuture = serverBootstrap.bind(listenPort).sync();
         if (channelFuture.isSuccess()) {
-            log.info("id-Verifier listen in port {} successfully", listenPort);
+            log.info("id-Verifier in domain {} listen in port {} successfully", domain,listenPort);
         } else {
-            log.error("id-Verifier  start in port {} error", listenPort);
+            log.error("id-Verifier in domain {} start in port {} error",domain, listenPort);
         }
     }
 }

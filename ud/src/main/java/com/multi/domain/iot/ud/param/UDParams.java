@@ -113,6 +113,8 @@ public class UDParams extends PublicParams {
         this.udAuthenticationMessage.setTotalVerifiersNumber(this.verifiersSession.size());
         //10.设置用户的唯一标识-用其身份隐私保护信息生成
         this.udAuthenticationMessage.setUdAddress(new InetSocketAddress(this.host,this.listenPort));
+        //10.设置所在域
+        this.udAuthenticationMessage.setDomain(this.domain);
     }
 
     private void computeRandomPolynomial(int order) {
@@ -279,10 +281,10 @@ public class UDParams extends PublicParams {
         this.s = this.Zq.newRandomElement().getImmutable();
         this.secret = this.generatorOne.powZn(this.s).getImmutable();
         //初始化身份信息
-        this.name = "zhangsan";
-        this.id = 2343;
-        this.email = "12321.@qq.com";
-        this.phone = "123324788345";
+        this.name = UDParamsFactory.name;
+        this.id = UDParamsFactory.id;
+        this.email = UDParamsFactory.email;
+        this.phone = UDParamsFactory.phone;
     }
 
     public void writePIDToFile(String filePath) throws IOException {

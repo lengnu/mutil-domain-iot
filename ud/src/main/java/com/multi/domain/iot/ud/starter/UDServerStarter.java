@@ -56,9 +56,9 @@ public class UDServerStarter {
                 });
         ChannelFuture channelFuture = serverBootstrap.bind(listenPort).sync();
         if (channelFuture.isSuccess()) {
-            log.info("UD listen in port {} successfully", listenPort);
+            log.info("UD in domain {} listen in port {} successfully", domain, listenPort);
         } else {
-            log.error("UD  start in port {} error", listenPort);
+            log.error("UD in domain {} start in port {} error", domain, listenPort);
         }
     }
 }

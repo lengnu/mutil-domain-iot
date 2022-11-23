@@ -1,5 +1,6 @@
 package com.multi.domain.iot.common.message;
 
+import com.multi.domain.iot.common.domain.Domain;
 import lombok.Data;
 
 import java.net.InetSocketAddress;
@@ -27,4 +28,5 @@ public class UDAuthenticationMessage {
     private int totalVerifiersNumber;
     //消息的源，即ud的地址
     private InetSocketAddress udAddress;
+    private Domain domain;
 }

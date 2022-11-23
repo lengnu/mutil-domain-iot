@@ -11,13 +11,17 @@ import com.multi.domain.iot.ud.param.UDParamsFactory;
  */
 public class UDStarter {
     public static void main(String[] args) throws InterruptedException {
-        if (args.length != 2) {
+        if (args.length != 6) {
             throw new RuntimeException("The input parameter is malformed");
         }
         int listenPort = Integer.parseInt(args[0]);
         Domain domain = Domain.valueOf(args[1]);
         UDParamsFactory.listenPort = listenPort;
         UDParamsFactory.domain = domain;
+        UDParamsFactory.name = args[2];
+        UDParamsFactory.email = args[3];
+        UDParamsFactory.id = Integer.parseInt(args[4]);
+        UDParamsFactory.phone = args[5];
         UDServerStarter serverStarter = new UDServerStarter(listenPort,domain);
         UDClientStarter udClientStarter = new UDClientStarter();
     }

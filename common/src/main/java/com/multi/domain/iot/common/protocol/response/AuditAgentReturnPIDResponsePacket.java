@@ -1,5 +1,6 @@
 package com.multi.domain.iot.common.protocol.response;
 
+import com.multi.domain.iot.common.domain.Domain;
 import com.multi.domain.iot.common.protocol.Packet;
 import com.multi.domain.iot.common.protocol.message.MessageType;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 public class AuditAgentReturnPIDResponsePacket extends Packet {
     private byte[] identityProtectionInformation;
     private byte[] PID;
+    private Domain domain;
     @Override
     public byte getMessageType() {
         return MessageType.AUDIT_AGENT_RETURN_PID_RESPONSE;

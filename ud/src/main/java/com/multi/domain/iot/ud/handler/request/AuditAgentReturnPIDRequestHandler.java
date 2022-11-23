@@ -9,6 +9,7 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  * @author duwei
@@ -31,12 +32,14 @@ public class AuditAgentReturnPIDRequestHandler extends SimpleChannelInboundHandl
             boolean success = validator.verify();
             if (success){
                 log.info("UD successfully verifies and accepts PID as his fake identity");
+                log.info("PID(Base64) : {} " , Base64.encodeBase64String(requestPacket.getPID()));
                 UDParamsFactory.getInstance().setPID(requestPacket.getPID());
                 UDParamsFactory.getInstance().writePIDToFile(UDParamsFactory.SELF_PARAMS_SAVE_PATH);
                 log.info("PID has been written to file {}",UDParamsFactory.SELF_PARAMS_SAVE_PATH);
                 log.info("Notify auditAgent to deposit the information into the blockchain");
                 AuditAgentReturnPIDResponsePacket responsePacket = new AuditAgentReturnPIDResponsePacket();
                 responsePacket.setPID(responsePacket.getPID());
+                responsePacket.setDomain(UDParamsFactory.getInstance().getDomain());
                 responsePacket.setIdentityProtectionInformation(UDParamsFactory.getInstance().getIdentityProtectionInformation());
                 ctx.writeAndFlush(responsePacket);
             }else {

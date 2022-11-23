@@ -20,6 +20,10 @@ public class UDParamsFactory {
     public static final String HOST = IPUtils.getLocalIp();
     public static int listenPort;
     public static Domain domain;
+    public static String name;
+    public static String email;
+    public static int id;
+    public static String phone;
 
     /**
      * 单例模型获取参数

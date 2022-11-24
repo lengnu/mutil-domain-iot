@@ -8,76 +8,91 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3ea7315-3b56-482b-95f6-18ecdbb3aeef" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/audit-agent/lib/jpbc-api-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/lib/jpbc-plaf-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/response/AuditAgentReturnPIDResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/handler/response/AuditAgentReturnPIDResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/java/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/request/ConfirmAuthenticationMessageRequestHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/response/AuditAgentReturnPIDResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/handler/response/AuditAgentReturnPIDResponseHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/com/multi/domain/iot/auditagent/session/ConfirmAuthenticationMessageSessionUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit-agent/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/audit-agent/target/classes/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/audit-agent-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/audit-agent-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit-agent/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/auditAgentParams-public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auditAgentParams-public.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auditAgentParams-self.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auditAgentParams-self.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/lib/jpbc-api-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/lib/jpbc-plaf-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/message/UDAuthenticationMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/message/UDAuthenticationMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/request/ConfirmAuthenticationMessageRequestPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/request/ConfirmAuthenticationMessageRequestPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/response/AuditAgentReturnPIDResponsePacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/protocol/response/AuditAgentReturnPIDResponsePacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/message/UDAuthenticationMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/message/UDAuthenticationMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/param/PublicParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/param/PublicParams.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/request/ConfirmAuthenticationMessageRequestPacket.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/request/ConfirmAuthenticationMessageRequestPacket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/response/AuditAgentReturnPIDResponsePacket.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/multi/domain/iot/common/protocol/response/AuditAgentReturnPIDResponsePacket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/common-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/common-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/common-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/api-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/commons-codec-1.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/fastjson-1.2.79.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/logback-classic-1.2.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/logback-core-1.2.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/lombok-1.18.24.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-all-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-buffer-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-dns-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-haproxy-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-http-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-http2-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-memcache-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-mqtt-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-redis-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-smtp-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-socks-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-stomp-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-codec-xml-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-common-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-handler-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-handler-proxy-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-resolver-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-resolver-dns-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-resolver-dns-classes-macos-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-resolver-dns-native-macos-4.1.72.Final-osx-aarch_64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-resolver-dns-native-macos-4.1.72.Final-osx-x86_64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-tcnative-classes-2.0.46.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-classes-epoll-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-classes-kqueue-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-native-epoll-4.1.72.Final-linux-aarch_64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-native-epoll-4.1.72.Final-linux-x86_64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-native-kqueue-4.1.72.Final-osx-aarch_64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-native-kqueue-4.1.72.Final-osx-x86_64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-native-unix-common-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-rxtx-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-sctp-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/netty-transport-udt-4.1.72.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/plaf-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/lib/slf4j-api-1.7.32.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/id-Verifier-public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-Verifier-public.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/id-Verifier-self.properties" beforeDir="false" afterPath="$PROJECT_DIR$/id-Verifier-self.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/lib/jpbc-api-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/lib/jpbc-plaf-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/starter/IDVerifierServerStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/java/com/multi/domain/iot/verifier/starter/IDVerifierServerStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/handler/request/UDAuthenticationMessageRequestHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/starter/IDVerifierServerStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/com/multi/domain/iot/verifier/starter/IDVerifierServerStarter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id-verifier/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/id-verifier/target/classes/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/lib/jpbc-api-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/lib/jpbc-plaf-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/handler/EnrollInformationRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/handler/EnrollInformationRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/handler/FetchPublicParameterRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/handler/FetchPublicParameterRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/handler/QueryAuditAgentAndIDVerifiersRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/handler/QueryAuditAgentAndIDVerifiersRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/session/SessionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/session/SessionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/starter/PublicServerStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/starter/PublicServerStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/test/ParamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/java/com/multi/domain/iot/server/test/ParamTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/target/classes/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public-server/target/public-server-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/public-server/target/public-server-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/id-verifier-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/id-verifier-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/id-verifier/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/handler/EnrollInformationRequestHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/handler/FetchPublicParameterRequestHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/handler/QueryAuditAgentAndIDVerifiersRequestHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/session/SessionUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/starter/PublicServerStarter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/starter/PublicServerStarter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/classes/com/multi/domain/iot/test/ParamTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/public-server-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public-server/target/public-server-1.0-SNAPSHOT.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/public.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud-public.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud-public.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud-self.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ud-self.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/lib/jpbc-api-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/lib/jpbc-plaf-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ud/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/request/AuditAgentReturnPIDRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/handler/request/AuditAgentReturnPIDRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDParamsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/param/UDParamsFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDServerStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDServerStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/java/com/multi/domain/iot/ud/starter/UDStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ud/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/request/AuditAgentReturnPIDRequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/handler/request/AuditAgentReturnPIDRequestHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDParams.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDParamsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/param/UDParamsFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDServerStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDServerStarter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/com/multi/domain/iot/ud/starter/UDStarter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ud/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ud/target/classes/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud-public.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud-self.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/ud-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ud/target/ud-1.0-SNAPSHOT.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,8 +127,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="E:/JAVA/maven/apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="E:\JAVA\maven\apache-maven-3.6.3\conf\settings.xml" />
+        <option name="mavenHome" value="D:/maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -121,7 +136,7 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2Hekoo8JUAIxypSjbOqCVrudAgX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -133,7 +148,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ud/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/audit-agent/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -142,11 +157,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\ud\src\main\resources" />
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\audit-agent\src\main\resources" />
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\id-verifier\src\main\resources" />
-      <recent name="C:\Users\001\Desktop\Multi-Domain-IoT\public-server\src\main\resources" />
       <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\audit-agent\src\main\resources" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\id-verifier\src\main\resources" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\ud\src\main\resources" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\ud" />
+      <recent name="C:\Users\Lenovo\Desktop\mutil-domain-iot\ud\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\001\Desktop\Multi-Domain-IoT" />
@@ -161,7 +176,7 @@
     <configuration name="AuditAgentStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.auditagent.starter.AuditAgentStarter" />
       <module name="audit-agent" />
-      <option name="PROGRAM_PARAMETERS" value="8888" />
+      <option name="PROGRAM_PARAMETERS" value="8889" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.multi.domain.iot.auditagent.starter.*" />
@@ -202,20 +217,6 @@
     <configuration name="IDVerifierStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.verifier.starter.IDVerifierStarter" />
       <module name="id-verifier" />
-      <option name="PROGRAM_PARAMETERS" value="7772 A" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.multi.domain.iot.verifier.starter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IDVerifierStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.verifier.starter.IDVerifierStarter" />
-      <module name="id-verifier" />
       <option name="PROGRAM_PARAMETERS" value="5559 A" />
       <extension name="coverage">
         <pattern>
@@ -240,10 +241,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UDStarter" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="UDStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.ud.starter.UDStarter" />
       <module name="ud" />
-      <option name="PROGRAM_PARAMETERS" value="6633 A zhaongzi 2849 49 324" />
+      <option name="PROGRAM_PARAMETERS" value="4444 A zhangsan 1567@163.com 32 18376569899" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.multi.domain.iot.ud.starter.*" />
@@ -263,7 +264,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.UDStarter" />
-        <item itemvalue="Application.IDVerifierStarter" />
         <item itemvalue="Application.AuditAgentStarter" />
         <item itemvalue="Application.PublicServerStarter" />
         <item itemvalue="Application.IDVerifierStarter" />
@@ -284,8 +284,10 @@
       <workItem from="1668857243699" duration="1239000" />
       <workItem from="1668942636259" duration="14749000" />
       <workItem from="1669031841780" duration="12264000" />
-      <workItem from="1669117438987" duration="14947000" />
-      <workItem from="1669193784824" duration="3000" />
+      <workItem from="1669117438987" duration="15009000" />
+      <workItem from="1669203525072" duration="931000" />
+      <workItem from="1669204493410" duration="238000" />
+      <workItem from="1669204758771" duration="3426000" />
     </task>
     <servers />
   </component>
@@ -312,7 +314,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/common/src/main/java/com/multi/domain/iot/common/pool/ConnectionPoolingFactory.java</url>
           <line>36</line>
-          <properties class="com.multi.domain.iot.common.pool.ConnectionPoolingFactory">
+          <properties class="com.multi.domain.iot.common.pool.ConnectionPoolingFactory" method="doCreateChannel">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

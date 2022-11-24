@@ -2,7 +2,7 @@
   <configuration default="false" name="IDVerifierStarter" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="com.multi.domain.iot.verifier.starter.IDVerifierStarter" />
     <module name="id-verifier" />
-    <option name="PROGRAM_PARAMETERS" value="7773 A" />
+    <option name="PROGRAM_PARAMETERS" value="7771 A" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.multi.domain.iot.verifier.starter.*" />
